@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import EventDashboard from './components/EventDashboard'
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div >
-      <h1>Social App</h1>
-      
+      <Navbar/>
+      <EventDashboard/>
     </div>
   );
 }
