@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Button, Container, Menu} from 'semantic-ui-react'
+import './style.css'
 
 
 class Navbar extends Component {
@@ -8,7 +9,6 @@ class Navbar extends Component {
              <Menu inverted fixed="top">
                <Container>
                  <Menu.Item header>
-                   <img src="assets/logo.png" alt="logo" />
                    Re-vents
                  </Menu.Item>
                  <Menu.Item name="Events" />
