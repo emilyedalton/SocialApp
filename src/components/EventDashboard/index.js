@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Grid, Button} from 'semantic-ui-react'
 import EventList from '../EventList'
 import EventForm from '../EventForm';
+import cuid from 'cuid'
 
 const eventsDashboard = [
   {
@@ -60,7 +61,8 @@ class EventDashboard extends Component {
     //     super(props)
  state = {
     events: eventsDashboard,
-    isOpen: false
+    isOpen: false,
+    selectedEvent: null
 
 }
 //aarow functin in the method does the same thing as below
@@ -79,10 +81,31 @@ class EventDashboard extends Component {
     handleCancel=()=>{
         this.setState({
             isOpen: false,
+            selectedEvent: null
         })
     
     }
+    handleCreateEvent = (newEvent) =>{
+        newEvent.id= cuid();
+        newEvent.PhotoUrl= "photo shoud be here";
+        const updatedEvents = [...this.state.events, newEvent]
+        this.setState({
+            events: updatedEvents,
+            isOpen: true
+        })
+
+
+    }
+    handleEditEvent=(eventToUpdate)=>() =>{
+        this.setState({
+            selectedEvent: eventToUpdate,
+            isOpen: true
+
+        })
+    }
+
     render () {
+        const {selectedEvent} =this.state
 
     return(
     
@@ -90,6 +113,7 @@ class EventDashboard extends Component {
 <Grid.Column width ={10}>
 
 <EventList
+onEventEdit={this.handleEditEvent}
 events={this.state.events}
 />
 </Grid.Column>
@@ -99,7 +123,9 @@ onClick = {this.handleFormOpen}
 positive content ="Create Event"/>
 {this.state.isOpen &&
 <EventForm
-handleCancel={this.handleCancel}/>}
+handleCancel={this.handleCancel}
+createEvent={this.handleCreateEvent}
+selectedEvent={selectedEvent}/>}
 </Grid.Column>
 
 
