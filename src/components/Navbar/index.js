@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Button, Container, Menu} from 'semantic-ui-react'
+import {NavLink, Link} from 'react-router-dom'
 import './style.css'
 
 
@@ -10,9 +11,11 @@ class Navbar extends Component {
                <Container>
                  <Menu.Item header>
                  </Menu.Item>
-                 <Menu.Item name="Form" />
+                 <Menu.Item  as={NavLink} to='/' name="Home"/>
+                 <Menu.Item  as={NavLink} to='/people' name="People"/>
+
                  <Menu.Item>
-                   <Button floated="right"  inverted content="Create" />
+                   <Button as={Link} to='createEvent' floated="right"  inverted content="Create" />
                  </Menu.Item>
                  <Menu.Item position="right">
                    <Button basic inverted content="Login" />

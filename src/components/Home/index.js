@@ -1,15 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
 
+import {Button} from 'semantic-ui-react'
 
-
-class Home extends Component {
-    render () {
+const Home =({history})=> {
     return(
-         <h1>Home</h1>    
+        <div>
+         <h1>Home</h1>  
+         <Button onClick={()=>history.push('/events')}basic content="Go Somewhere" />
+         </div>
     )
     
     }
+
     
     
-    }
     export default Home 
