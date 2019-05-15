@@ -6,14 +6,13 @@ import './style.css'
 class Navbar extends Component {
     render () {
     return(
-             <Menu inverted fixed="top">
+             <Menu inverted fixed="top" className='ui violet'>
                <Container>
                  <Menu.Item header>
-                   Re-vents
                  </Menu.Item>
-                 <Menu.Item name="Events" />
+                 <Menu.Item name="Form" />
                  <Menu.Item>
-                   <Button floated="right" positive inverted content="Create Event" />
+                   <Button floated="right"  inverted content="Create" />
                  </Menu.Item>
                  <Menu.Item position="right">
                    <Button basic inverted content="Login" />

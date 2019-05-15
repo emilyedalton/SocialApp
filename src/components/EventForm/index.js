@@ -15,27 +15,44 @@ class EventForm extends Component {
         event: emptyEvent
         
     }
+    //will not be called again if the properties change
     componentDidMount (){
         if (this.props.selectedEvent !== null){
             this.setState ({
                 event:this.props.selectedEvent
             })
         }
+    }
+
+
+componentWillReceiveProps (nextProps){
+if (nextProps.selectedEvent !==this.props.selectedEvent){
+this.setState({
+    event: nextProps.selectedEvent || emptyEvent
+})
+
+}
+
+}
+
+    handleSubmit = (e)=>{
+    e.preventDefault()
+    if (this.state.event.id){
+        this.props.updateEvent(this.state.event);
+        }else{
+
+    this.props.createEvent(this.state.event)
+
+        }
 
     }
 
-    handleSubmit = (e)=>{
-        e.preventDefault()
-this.props.createEvent(this.state.event)
-
-
-}
 
 handleInputChange =  (e) =>{
     const newEvent = this.state.event;
     newEvent[e.target.name] = e.target.value
     this.setState({
-event: newEvent
+    event: newEvent
 
     })
     }
