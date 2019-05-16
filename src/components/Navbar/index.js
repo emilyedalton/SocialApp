@@ -2,13 +2,13 @@ import React, {Component} from 'react'
 import {Button, Container, Menu} from 'semantic-ui-react'
 import SignIn from '../SignIn/'
 import SignOut from '../SignOut/'
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink, Link, withRouter} from 'react-router-dom'
 import './style.css'
 
 
 class Navbar extends Component {
     state={ 
-        authenticated : true
+        authenticated : false
     }
     handleSignIn = ()=>{
         this.setState({
@@ -21,20 +21,26 @@ class Navbar extends Component {
         this.setState({
             authenticated: false
         })
-
+this.props.history.push('/')
     }
     render () {
         const {authenticated} = this.state
     return(
-             <Menu inverted fixed="top" className='ui violet'>
+             <Menu inverted fixed="top" style={{
+                background: "#4E2A84",
+
+             }}>
                <Container>
                  <Menu.Item header>
                  </Menu.Item>
                  <Menu.Item  as={NavLink} to='/' name="Home"/>
+                 {authenticated &&
                  <Menu.Item  as={NavLink} to='/people' name="People"/>
-
+                }
                  <Menu.Item>
+                 {authenticated &&
                    <Button as={Link} to='createEvent' floated="right"  inverted content="Create" />
+                 }
                  </Menu.Item>
     {authenticated ?(<SignIn signOut={this.handleSignOut}/> 
                  ):(
@@ -48,4 +54,4 @@ class Navbar extends Component {
     
     }
 }
-    export default Navbar 
+    export default withRouter(Navbar);

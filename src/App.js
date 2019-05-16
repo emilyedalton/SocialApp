@@ -5,6 +5,7 @@ import PeopleDashboard from './components/PeopleDashboard'
 import UserDetails from './components/UserDetails/'
 import SettingsDashboard from './components/SettingsDashboard/'
 import Home from './components/Home/'
+import Test from './components/Test/'
 import { Route,Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import {Container} from 'semantic-ui-react'
@@ -28,6 +29,8 @@ class App extends Component {
       <Switch>
       <Route path ='/events' component={EventDashboard}/>
       <Route path ='/events/:id' component={EventDashboard}/>
+      <Route path ='/test' component={Test}/>
+
       <Route path ='/people' component={PeopleDashboard}/>
       <Route path ='/profile/:id' component={UserDetails}/>
       <Route path ='/settings' component={SettingsDashboard}/>
