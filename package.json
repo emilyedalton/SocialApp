@@ -17,6 +17,8 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
+    "redux-devtools": "^3.5.0",
+    "redux-devtools-extension": "^2.13.8",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.1"
   },
@@ -36,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/plugin-proposal-export-default-from": "^7.2.0"
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@types/redux-devtools": "^3.0.46"
   }
 }
