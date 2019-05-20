@@ -47,9 +47,8 @@ class EventDashboard extends Component {
     handleCreateEvent = (newEvent) =>{
         newEvent.id= cuid();
         newEvent.PhotoUrl= "photo shoud be here";
-        const updatedEvents = [...this.state.events, newEvent]
+        this.props.createEvent(newEvent)
         this.setState({
-            events: updatedEvents,
             isOpen: true
         })
 
