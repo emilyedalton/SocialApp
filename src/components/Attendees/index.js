@@ -9,9 +9,9 @@ import { Segment, List, Item, Label} from 'semantic-ui-react'
 // import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
-class Attendees extends Component {
+const Attendees = ({event}) => {
    
-render (){
+
     return(
      <div>
         <Segment
@@ -37,7 +37,7 @@ render (){
               <Item.Image size="tiny" src="/assets/user.png" />
               <Item.Content verticalAlign="middle">
                 <Item.Header as="h3">
-                  <a>Attendee Name</a>
+                  {/* <a>{event.attendees.name}</a> */}
                 </Item.Header>
               </Item.Content>
             </Item>
@@ -47,5 +47,5 @@ render (){
     
 )
     }
-    }
+    
     export default Attendees
