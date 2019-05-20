@@ -4,11 +4,17 @@ import { connect } from 'react-redux'
 import EventList from '../EventList'
 import EventForm from '../EventForm';
 import cuid from 'cuid'
+import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 const mapState =(state) => ({
     events: state.events
 })
 
+const actions = {
+    createEvent,
+    deleteEvent,
+    updateEvent
+}
 class EventDashboard extends Component {
 //can remove the consturctor when you use arrow functions on the methods. 
     // constructor(props){
@@ -49,13 +55,12 @@ class EventDashboard extends Component {
 
 
     }
-    handleDeleteEvent = (eventID)=>() => {
-        const updatedEvents = this.state.events.filter(e => e.id !== eventID);
-        this.setState({
-            events: updatedEvents
 
-        })
-    }
+    handleDeleteEvent = (eventID)=>() => {
+        this.props.deleteEvent(eventID)
+
+        }
+    
     handleOpenEvent=(eventToOpen)=>() =>{
         this.setState({
             selectedEvent: eventToOpen,
@@ -64,18 +69,7 @@ class EventDashboard extends Component {
         })
     }
 handleUpdateEvent = ( updatedEvents)=>{
-    this.setState({
-        events: this.state.events.map(event =>{
-            if (event.id === updatedEvents.id){
-                return Object.assign({}, updatedEvents);
-            }else{
-                return event
-            }
-
-        }),
-        isOpen: false, 
-        selectedEvent: null
-    })
+   
 
 }
     render () {
@@ -115,4 +109,4 @@ updateEvent ={this.handleUpdateEvent}
     
     
     }
-    export default connect(mapState)(EventDashboard)
+    export default connect(mapState, actions)(EventDashboard)
