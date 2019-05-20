@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 // import { Grid, Button} from 'semantic-ui-react'
 // import { connect } from 'react-redux'
 // import EventList from '../EventList'
@@ -8,14 +7,16 @@ import React, {Component} from 'react'
 // import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
-class Attendees extends Component {
+class Comments extends Component {
 render (){
     return(
 <div>
-    <h1> Attendees (Sidebar)</h1>
+
+    <h1>Event Info</h1>
+    
 </div>
     )
 }
 
     }
-    export default Attendees
+    export default Comments
