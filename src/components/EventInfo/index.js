@@ -9,8 +9,8 @@ import { Segment, Icon, Grid, Button} from 'semantic-ui-react'
 // import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
-class EventInfo extends Component {
-render (){
+const EventInfo =({event}) =>  {
+
     return(
    <Segment.Group>
       <Segment attached="top">
@@ -19,7 +19,7 @@ render (){
             <Icon size="large" color="teal" name="info" />
           </Grid.Column>
           <Grid.Column width={15}>
-            <p>Description of Event</p>
+            <p>{event.description}</p>
           </Grid.Column>
         </Grid>
       </Segment>
@@ -29,7 +29,7 @@ render (){
             <Icon name="calendar" size="large" color="teal" />
           </Grid.Column>
           <Grid.Column width={15}>
-            <span>Event Date</span>
+            <span>{event.date}</span>
           </Grid.Column>
         </Grid>
       </Segment>
@@ -39,7 +39,7 @@ render (){
             <Icon name="marker" size="large" color="teal" />
           </Grid.Column>
           <Grid.Column width={11}>
-            <span>Event Venue</span>
+            <span>{event.venue}</span>
           </Grid.Column>
           <Grid.Column width={4}>
             <Button color="teal" size="tiny" content="Show Map" />
@@ -50,5 +50,5 @@ render (){
     )
 }
 
-    }
+    
     export default EventInfo

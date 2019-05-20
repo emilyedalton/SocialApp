@@ -7,8 +7,9 @@ import { Segment, Image, Item, Header, Button} from 'semantic-ui-react'
 // import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
-class DetailHeader extends Component {
-render (){
+const DetailHeader =({event})=> {
+    
+
     return(
         <div>
    <Segment.Group>
@@ -23,15 +24,15 @@ render (){
               <Item.Content>
                 <Header
                   size="huge"
-                  content="Content"
+                  content={event.title}
                   style={{ 
                     
                     color: 'White' 
                 }}
                 />
-                <p>Event Date</p>
+                <p>{event.date}</p>
                 <p>
-                  Hosted by <strong>Hosted by</strong>
+                  Hosted by <strong>{event.hostedBy}</strong>
                 </p>
               </Item.Content>
             </Item>
@@ -52,5 +53,5 @@ render (){
     )
 }
 
-    }
+    
     export default DetailHeader

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Segment, List, Item, Label} from 'semantic-ui-react'
 
-
 // import { Grid, Button} from 'semantic-ui-react'
 // import { connect } from 'react-redux'
 // import EventList from '../EventList'
