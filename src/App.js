@@ -9,6 +9,7 @@ import Test from './components/Test/'
 import { Route,Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import {Container} from 'semantic-ui-react'
+import EventDetailedPage from './components/EventDetailedPage';
 
 class App extends Component {
   render (){
@@ -35,6 +36,8 @@ class App extends Component {
       <Route path ='/profile/:id' component={UserDetails}/>
       <Route path ='/settings' component={SettingsDashboard}/>
       <Route path ='/createEvent' component={EventForm}/>
+      <Route path ='/event/:id' component={EventDetailedPage}/>
+
       </Switch>
      
 

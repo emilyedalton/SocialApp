@@ -17,4 +17,4 @@ render (){
 }
 
     }
-    export default  DetailHeader
+    export default DetailHeader

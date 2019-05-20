@@ -7,7 +7,7 @@ import React, {Component} from 'react'
 // import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
-class Comments extends Component {
+class EventInfo extends Component {
 render (){
     return(
 <div>
@@ -19,4 +19,4 @@ render (){
 }
 
     }
-    export default Comments
+    export default EventInfo

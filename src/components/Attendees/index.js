@@ -12,7 +12,7 @@ class Attendees extends Component {
 render (){
     return(
 <div>
-    <h1> Attendees (Sidebar)</h1>
+<h1> Attendees (Sidebar)</h1>
 </div>
     )
 }
