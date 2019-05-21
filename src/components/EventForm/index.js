@@ -1,51 +1,56 @@
 import React, {Component} from 'react'
 import {Button, Form, Segment} from 'semantic-ui-react'
+import {connect} from 'react-redux'
+import { createEvent, updateEvent} from '../EventList/eventActions'
+import cuid from 'cuid'
 
-const emptyEvent ={
-    title:'', 
-    date: '',
-    city: '',
-    venue: '',
-    hostedBy: ''
 
+
+const mapState =(state, ownProps) =>{
+    const eventID = ownProps.match.params.id
+    let event = {
+        title:'', 
+        date: '',
+        city: '',
+        venue: '',
+        hostedBy: ''
+
+    }
+    if (eventID && state.events.length > 0){
+event = state.events.filter(event => event.id === eventID)[0];
+    }
+    return event
 }
 
+const actions = {
+
+    createEvent, 
+    updateEvent
+}
 class EventForm extends Component {
     state ={
-        event: emptyEvent
+        event: Object.assign({}, this.props.event)
         
     }
-    //will not be called again if the properties change
-    componentDidMount (){
-        if (this.props.selectedEvent !== null){
-            this.setState ({
-                event:this.props.selectedEvent
-            })
-        }
-    }
+   
 
 
-componentWillReceiveProps (nextProps){
-if (nextProps.selectedEvent !==this.props.selectedEvent){
-this.setState({
-    event: nextProps.selectedEvent || emptyEvent
-})
-
-}
-
-}
 
     handleSubmit = (e)=>{
     e.preventDefault()
     if (this.state.event.id){
         this.props.updateEvent(this.state.event);
         }else{
-
-    this.props.createEvent(this.state.event)
+const newEvent={
+    ...this.state.event,
+    id:cuid()
+}
+    this.props.createEvent(newEvent)
+    this.props.history.push('/events')
 
         }
 
-    }
+    };
 
 
 handleInputChange =  (e) =>{
@@ -69,7 +74,7 @@ handleInputChange =  (e) =>{
                      </Form.Field>
                      <Form.Field>
                        <label>Event Date</label>
-                       <input name ='date' value={event.date} onChange={this.handleInputChange} placeholder="First Name" type="date" placeholder="Event Date" />
+                       <input name ='date' value={event.date} onChange={this.handleInputChange} placeholder="First Name" type="date"  />
                      </Form.Field>
                      <Form.Field>
                        <label>City</label>
@@ -98,4 +103,4 @@ handleInputChange =  (e) =>{
     
     
     }
-    export default EventForm 
+    export default connect(mapState, actions)(EventForm)
