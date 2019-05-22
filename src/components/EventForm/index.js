@@ -1,27 +1,22 @@
 import React, {Component} from 'react'
 import {Button, Form, Segment} from 'semantic-ui-react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { createEvent, updateEvent} from '../EventList/eventActions'
 import cuid from 'cuid'
 
 
+const mapState =(state, ownProps) => {
+    const eventID = ownProps.match.params.id;
+    let event ={};
 
-const mapState =(state, ownProps) =>{
-    const eventID = ownProps.match.params.id
-    let event = {
-        title:'', 
-        date: '',
-        city: '',
-        venue: '',
-        hostedBy: ''
+    if (eventID && state.events.length >0){
+        event = state.events.filter(event => event.id === eventID)[0]
 
     }
-    if (eventID && state.events.length > 0){
-event = state.events.filter(event => event.id === eventID)[0];
+    return{
+        event
     }
-    return event
 }
-
 const actions = {
 
     createEvent, 
@@ -34,16 +29,16 @@ class EventForm extends Component {
     }
    
 
-
-
     handleSubmit = (e)=>{
     e.preventDefault()
     if (this.state.event.id){
         this.props.updateEvent(this.state.event);
+        this.props.history.goBack();
         }else{
 const newEvent={
     ...this.state.event,
-    id:cuid()
+    id:cuid(),
+    hostPhotoURL: '/assets/user.png'
 }
     this.props.createEvent(newEvent)
     this.props.history.push('/events')
@@ -92,7 +87,7 @@ handleInputChange =  (e) =>{
                        Submit
                      </Button>
                      <Button 
-                     onClick={handleCancel}
+                     onClick={this.props.history.goBack}
                      type="button">Cancel</Button>
                    </Form>
                  </Segment>   
@@ -103,4 +98,5 @@ handleInputChange =  (e) =>{
     
     
     }
+
     export default connect(mapState, actions)(EventForm)

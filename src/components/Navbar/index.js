@@ -39,7 +39,7 @@ this.props.history.push('/')
                 }
                  <Menu.Item>
                  {authenticated &&
-                   <Button as={Link} to='createEvent' floated="right"  inverted content="Create" />
+                   <Button as={Link} to='/createEvent' floated="right"  inverted content="Create" />
                  }
                  </Menu.Item>
     {authenticated ?(<SignIn signOut={this.handleSignOut}/> 

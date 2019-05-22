@@ -45,7 +45,7 @@ key={attendees.id} attendee ={attendees}
                 </Segment>
                 <Segment clearing>
 <span>{event.Description}</span>                  
-<Button onClick={onEventOpen(event)}as="a" color="teal" floated="right" content="View" />
+<Button as={Link} to ={`/event/${event.id}`}color="teal" floated="right" content="View" />
 <Button onClick={deleteEvent(event.id)}as="a" color="red" floated="left" content="delete" />
 <Button as={Link} to ={`/event/${event.id}`} color = "teal" floted="right" content = "go to event"/>
                 </Segment>

@@ -67,8 +67,8 @@ class EventDashboard extends Component {
 
         })
     }
-handleUpdateEvent = ( updatedEvents)=>{
-    this.props.updateEvent(updatedEvents)
+handleUpdateEvent = (updatedEvent)=>{
+    this.props.updateEvent(updatedEvent)
     this.setState({
         isOpen: false, 
         selectedEvent: null
