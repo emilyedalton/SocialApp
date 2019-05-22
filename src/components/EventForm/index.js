@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Form, Segment} from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import {reduxForm, Field} from 'redux-form'
 import { createEvent, updateEvent} from '../EventList/eventActions'
 import cuid from 'cuid'
 
@@ -63,10 +64,8 @@ handleInputChange =  (e) =>{
     return(
                  <Segment>
                    <Form onSubmit={this.handleSubmit}>
-                     <Form.Field>
-                       <label>Event Title</label>
-                       <input name ='title' value={event.title} onChange={this.handleInputChange} placeholder="First Name" />
-                     </Form.Field>
+                     <Field name ='title' type='text' component='input'placeholder='Event Title'>
+                                            </Field>
                      <Form.Field>
                        <label>Event Date</label>
                        <input name ='date' value={event.date} onChange={this.handleInputChange} placeholder="First Name" type="date"  />
@@ -99,4 +98,4 @@ handleInputChange =  (e) =>{
     
     }
 
-    export default connect(mapState, actions)(EventForm)
+    export default connect(mapState, actions)(reduxForm({form:'eventForm}'})(EventForm))
