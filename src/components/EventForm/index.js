@@ -6,6 +6,8 @@ import { createEvent, updateEvent} from '../EventList/eventActions'
 import cuid from 'cuid'
 import TextInput from '../../common/form/TextInput'
 import TextArea from '../../common/form/TextArea'
+import SelectInput from '../../common/form/SelectInput'
+
 
 
 const mapState =(state, ownProps) => {
@@ -25,6 +27,15 @@ const actions = {
     createEvent, 
     updateEvent
 }
+
+const category = [
+    {key: 'drinks', text: 'Drinks', value: 'drinks'},
+    {key: 'culture', text: 'Culture', value: 'culture'},
+    {key: 'film', text: 'Film', value: 'film'},
+    {key: 'food', text: 'Food', value: 'food'},
+    {key: 'music', text: 'Music', value: 'music'},
+    {key: 'travel', text: 'Travel', value: 'travel'},
+];
 class EventForm extends Component {
     state ={
         event: Object.assign({}, this.props.event)
@@ -61,7 +72,7 @@ const newEvent={
             <Header sub color ='black' content='details'/>
                    <Form onSubmit={this.handleSubmit}>
                      <Field name ='title' type='text' component={TextInput} placeholder='Event Title'/>
-                     <Field name ='category' type='text' component={TextInput} placeholder='Event category'/>
+                     <Field name ='category' type='text' options={category} multiple={true}component={SelectInput} placeholder='Event category'/>
                      <Field name ='description' type='text' rows={12} component={TextArea} placeholder='Event description'/>
                     
                      <Header sub color ='black' content='location information'/>
