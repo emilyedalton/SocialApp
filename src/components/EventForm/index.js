@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import {reduxForm, Field} from 'redux-form'
 import { createEvent, updateEvent} from '../EventList/eventActions'
 import cuid from 'cuid'
+import TextInput from '../../common/form/TextInput'
 
 
 const mapState =(state, ownProps) => {
@@ -64,8 +65,8 @@ handleInputChange =  (e) =>{
     return(
                  <Segment>
                    <Form onSubmit={this.handleSubmit}>
-                     <Field name ='title' type='text' component='input'placeholder='Event Title'>
-                                            </Field>
+                     <Field name ='title' type='text' component={TextInput} placeholder='Event Title'>
+                    </Field>
                      <Form.Field>
                        <label>Event Date</label>
                        <input name ='date' value={event.date} onChange={this.handleInputChange} placeholder="First Name" type="date"  />
