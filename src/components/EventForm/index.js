@@ -3,6 +3,7 @@ import {Button, Form, Segment, Grid, Header} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import {reduxForm, Field} from 'redux-form'
 import { createEvent, updateEvent} from '../EventList/eventActions'
+import { composeValidators, combineValidators, isRequired, hasLengthGreaterThan} from 'revalidate'
 import cuid from 'cuid'
 import TextInput from '../../common/form/TextInput'
 import TextArea from '../../common/form/TextArea'
@@ -36,12 +37,24 @@ const category = [
     {key: 'music', text: 'Music', value: 'music'},
     {key: 'travel', text: 'Travel', value: 'travel'},
 ];
+
+const validate= combineValidators({
+    title: isRequired({message: 'The field is required'}),
+    category: isRequired({message: 'This field is required'}),
+    description: composeValidators(
+        isRequired({message: 'Field is required'}),
+        hasLengthGreaterThan(4)({message: 'description needs to be at least 5 characters'})
+    )(),
+    city: isRequired('city'),
+    venue: isRequired('venue')
+})
+
+
 class EventForm extends Component {
     state ={
-        event: Object.assign({}, this.props.event)
-        
+        event: Object.assign({}, this.props.event),
+        isTrade: null
     }
-   
 
     handleSubmit = (values)=>{
    
@@ -64,9 +77,14 @@ const newEvent={
 
 
     render () {
-        
+        const {invalid, submitting, pristine}=this.props;
+  
     return(
         <Grid>
+        {this.state.isTrade !== null ? (
+           <h1>Trade Author</h1>
+        ): 
+        
         <Grid.Column width={10}>
         <Segment>
             <Header sub color ='black' content='details'/>
@@ -80,7 +98,7 @@ const newEvent={
                      <Field name ='city' type='text' component={TextInput} placeholder='Event city'/>
                      <Field name ='venue' type='text' component={TextInput} placeholder='Event venue'/>
                      <Field name ='date' type='text' component={TextInput} placeholder='Event date'/>
-                     <Button positive type="submit">
+                     <Button disabled ={invalid || submitting || pristine} positive type="submit">
                        Submit
                      </Button>
                      <Button 
@@ -89,9 +107,10 @@ const newEvent={
                    </Form>
                  </Segment>  
                  </Grid.Column>
+        }
         </Grid>
                   
-
+    
     )
     
     }
@@ -99,4 +118,4 @@ const newEvent={
     
     }
 
-    export default connect(mapState, actions)(reduxForm({form:'eventForm}', enableReinitialize: true})(EventForm))
+    export default connect(mapState, actions)(reduxForm({form:'eventForm}', enableReinitialize: true, validate})(EventForm))
