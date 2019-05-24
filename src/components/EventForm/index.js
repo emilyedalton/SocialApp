@@ -19,7 +19,7 @@ const mapState =(state, ownProps) => {
 
     }
     return{
-        event
+        initialValues: event
     }
 }
 const actions = {
@@ -43,14 +43,14 @@ class EventForm extends Component {
     }
    
 
-    handleSubmit = (e)=>{
-    e.preventDefault()
-    if (this.state.event.id){
-        this.props.updateEvent(this.state.event);
+    handleSubmit = (values)=>{
+   
+    if (this.props.initialValues.id){
+        this.props.updateEvent(values);
         this.props.history.goBack();
         }else{
 const newEvent={
-    ...this.state.event,
+    ...values,
     id:cuid(),
     hostPhotoURL: '/assets/user.png'
 }
@@ -70,7 +70,7 @@ const newEvent={
         <Grid.Column width={10}>
         <Segment>
             <Header sub color ='black' content='details'/>
-                   <Form onSubmit={this.handleSubmit}>
+                   <Form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                      <Field name ='title' type='text' component={TextInput} placeholder='Event Title'/>
                      <Field name ='category' type='text' options={category} multiple={true}component={SelectInput} placeholder='Event category'/>
                      <Field name ='description' type='text' rows={12} component={TextArea} placeholder='Event description'/>
@@ -99,4 +99,4 @@ const newEvent={
     
     }
 
-    export default connect(mapState, actions)(reduxForm({form:'eventForm}'})(EventForm))
+    export default connect(mapState, actions)(reduxForm({form:'eventForm}', enableReinitialize: true})(EventForm))
