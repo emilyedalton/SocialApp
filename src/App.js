@@ -10,11 +10,13 @@ import { Route,Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import {Container} from 'semantic-ui-react'
 import EventDetailedPage from './components/EventDetailedPage';
+import ModalManager from './modals/ModalManager'
 
 class App extends Component {
   render (){
   return (
     <div>
+      <ModalManager/>
       <Switch>
    <Route exact path ='/' component={Home}/>
    </Switch>
