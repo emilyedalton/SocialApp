@@ -1,11 +1,11 @@
 import React from 'react'
 import {Dropdown, Menu }from 'semantic-ui-react'
 
-const SignIn = ({signOut}) =>{
+const SignIn = ({signOut, currentUser}) =>{
 return (
 
        <Menu.Item position="right">
-         <Dropdown pointing="top left" text="Username">
+         <Dropdown pointing="top left" text={currentUser}>
            <Dropdown.Menu>
              <Dropdown.Item text="Create Event" icon="plus" />
              <Dropdown.Item text="My Events" icon="calendar" />
