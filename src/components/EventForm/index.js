@@ -8,6 +8,7 @@ import cuid from 'cuid'
 import TextInput from '../../common/form/TextInput'
 import TextArea from '../../common/form/TextArea'
 import SelectInput from '../../common/form/SelectInput'
+import {openModal} from "../../modals/ModalActions"
 
 
 
@@ -26,7 +27,8 @@ const mapState =(state, ownProps) => {
 const actions = {
 
     createEvent, 
-    updateEvent
+    updateEvent,
+    openModal
 }
 
 const category = [
@@ -54,6 +56,9 @@ class EventForm extends Component {
     state ={
         event: Object.assign({}, this.props.event),
         isTrade: null
+    }
+    componentDidMount(){
+        this.props.openModal('LoginModal')
     }
 
     handleSubmit = (values)=>{
