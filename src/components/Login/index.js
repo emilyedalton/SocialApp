@@ -6,12 +6,12 @@ import TextInput from '../../common/form/TextInput';
 import {login} from '../../common/auth/authActions'
 
 const actions = {
-    login
+    login, 
 }
 
 const LoginForm = ({login, handleSubmit}) => {
   return (
-    <Form error size="large"onSubmit={handleSubmit(login)}>
+    <Form error size="large" onSubmit={handleSubmit(login)}>
       <Segment>
         <Field
           name="email"

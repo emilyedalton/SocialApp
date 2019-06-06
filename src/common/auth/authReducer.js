@@ -5,7 +5,7 @@ const initialState ={
     currentUser:{}
 }
 
-export const loginUSer =(state, payload) =>{
+export const loginUser =(state, payload) =>{
 return {
 ...state, 
 authenticated: true,
@@ -14,7 +14,7 @@ currentUser: payload.cred.email
 
 }
 
-export const signOutUser = (state, payaload) =>{
+export const signOutUser = (state, payload) =>{
 
     return {
         ...state, 
@@ -26,7 +26,7 @@ export const signOutUser = (state, payaload) =>{
 }
 
 export default createReducer(initialState, {
-[LOGIN_USER]: loginUSer,
+[LOGIN_USER]: loginUser,
 [SIGN_OUT_USER]: signOutUser
 
 })
