@@ -1,4 +1,6 @@
 import {INCREMENT_COUNTER, DECREMENT_COUNTER, COUNTER_ACTION_STARTED, COUNTER_ACTION_FINISHED} from './testConstants'
+import { ASYNC_ACTION_START, ASYNC_ACTION_FINISH } from '../Async/asyncConstants';
+import { asyncActionFinish } from '../Async/asyncActions';
 
 export const incrementCounter = () => {
 
@@ -30,22 +32,22 @@ const delay = (ms)=>{
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export const incrementAsync = () =>{
+export const incrementAsync = (name) =>{
 
     return async dispatch =>{
-        dispatch(startCounterAction ())
+        dispatch({type: ASYNC_ACTION_START, payload: name})
         await delay(1000);
-        dispatch({type:INCREMENT_COUNTER})
-        dispatch(finishCounterAction())
+        dispatch(incrementCounter())
+        dispatch(asyncActionFinish())
     }
 }
 
-export const decrementAsync = () =>{
+export const decrementAsync = (name) =>{
 
     return async dispatch =>{
-        dispatch(startCounterAction ())
+        dispatch({type: ASYNC_ACTION_FINISH, payload: name})
         await delay(1000);
         dispatch({type:DECREMENT_COUNTER})
-        dispatch(finishCounterAction())
+        dispatch(asyncActionFinish())
     }
 }

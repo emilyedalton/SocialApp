@@ -7,8 +7,10 @@ import { Provider } from 'react-redux'
 import {configureStore}from './store/configureStore'
 import * as serviceWorker from './serviceWorker';
 import ScrolltoTop from './common/util/ScrolltoTop'
+import {loadEvent} from './components/EventList/eventActions'
 
 const store = configureStore()
+store.dispatch(loadEvent())
 
 ReactDOM.render(
 <Provider store ={store}>

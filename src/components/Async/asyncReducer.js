@@ -3,28 +3,32 @@ import { asyncActionStart } from "./asyncActions";
 import {createReducer} from '../../common/util/reducerUtil'
 
 const initialState = {
-    loading: false
+    loading: false,
+    elementName:null
 }
 
-const asyncActionStarted = (state) => {
+const asyncActionStarted = (state, payload) => {
     return {
         ...state,
-        loading: true
+        loading: true,
+        elementName: payload
     }
 }
 
 const asyncActionFinished = (state) => {
     return {
         ...state,
-        loading: false
+        loading: false,
+        elementName: null
+
     }
 }
 
 const asyncActionError = (state) => {
     return {
         ...state,
-        loading: false
-    }
+        loading: false,
+        elementName: null    }
 }
 
 export default createReducer(initialState,{

@@ -6,7 +6,8 @@ import {openModal} from '../../modals/ModalActions'
 
 const mapState = (state) =>({
     data: state.test.data,
-    loading: state.test.loading
+    loading: state.test.loading,
+    buttonName: state.async.elementName
 })
 
 const actions ={
@@ -17,13 +18,24 @@ openModal
 
 class Test extends Component {
     render() {
-        const {incrementAsync, decrementAsync, data, openModal, loading} = this.props;
+        const {incrementAsync, decrementAsync, data, openModal, loading, buttonName} = this.props;
         return(
             <div>
                 <h3>This is the state from redux: {data}</h3>
-            <Button loading ={loading} onClick = {incrementAsync} content = "increment"/>
-            <Button loading={loading} onClick = {decrementAsync} content = "decrement"/>
-            <Button onClick={()=>openModal('TestModal',{data: 44})} content = "open Modal"/>
+            <Button 
+            name = 'increment'
+            loading ={buttonName ==='increment' && loading} 
+            onClick = {(e)=>incrementAsync(e.target.name)} 
+            content = "increment"/>
+            <Button 
+            name = 'decrement'
+            loading ={buttonName ==='decrement' && loading} 
+            onClick = {(e) => decrementAsync(e.target.name)} 
+            content = "decrement"/>
+            <Button 
+            onClick={()=>
+                openModal('TestModal',{data: 44})} 
+                content = "open Modal"/>
 
             </div>
 

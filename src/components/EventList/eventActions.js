@@ -1,4 +1,6 @@
-import {CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT} from './eventConstants'
+import {CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT, FETCH_EVENT} from './eventConstants'
+import { asyncActionStart, asyncActionFinish, asyncActionError } from '../Async/asyncActions';
+import {fetchSampleData} from "../../data/mockapi"
 
 export const createEvent = (event) => {
 return {
@@ -23,6 +25,27 @@ export const deleteEvent = (eventID) => {
         type: DELETE_EVENT,
         payload:{
             eventID
+        }
+    }
+}
+
+export const fetchEvent = (events) => {
+    return {
+        type: FETCH_EVENT,
+        payload: events
+    }
+}
+
+export const loadEvent = () => {
+    return async dispatch => {
+        try {
+            dispatch(asyncActionStart())
+            let events = await fetchSampleData();
+            dispatch(fetchEvent(events))
+            dispatch(asyncActionFinish())
+        } catch (error) {
+            console.log(error);
+            dispatch(asyncActionError())
         }
     }
 }
