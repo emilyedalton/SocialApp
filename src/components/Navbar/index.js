@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {Button, Container, Menu} from 'semantic-ui-react'
 import SignIn from '../SignIn/'
@@ -43,12 +43,23 @@ this.props.history.push('/')
                  <Menu.Item header>
                  </Menu.Item>
                  <Menu.Item  as={NavLink} to='/' name="Home"/>
-                 {authenticated &&
-                 <Menu.Item  as={NavLink} to='/people' name="People"/>
-                }
+                 {authenticated &&(
+                     <Fragment>
+
+                 <Menu.Item  
+                 as={NavLink} 
+                 to='/people' 
+                 name="People"/>
+                 </Fragment>
+                     )}
                  <Menu.Item>
+
                  {authenticated &&
-                   <Button as={Link} to='/createEvent' floated="right"  inverted content="Create" />
+                   <Button 
+                   as={Link} 
+                   to='/createEvent' 
+                   floated="right"  
+                   inverted content="Create" />
                  }
                  </Menu.Item>
     {authenticated ?(<SignIn currentUser={auth.currentUser} signOut={this.handleSignOut}/> 
