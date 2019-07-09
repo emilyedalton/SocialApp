@@ -5,9 +5,11 @@ import EventList from '../EventList'
 import EventForm from '../EventForm';
 import cuid from 'cuid'
 import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
+import LoadingComponent from '../Loader';
 
 const mapState =(state) => ({
-    events: state.events
+    events: state.events,
+    loading: state.async.loading
 })
 
 const actions = {
@@ -77,7 +79,8 @@ class EventDashboard extends Component {
 // }
     render () {
         // const {selectedEvent} =this.state
-        const {events} =this.props
+        const {events, loading} =this.props; 
+        if (loading) return <LoadingComponent/>
     return(
     
 <Grid>

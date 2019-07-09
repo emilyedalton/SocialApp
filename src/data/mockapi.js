@@ -5,7 +5,7 @@ const delay = (ms)=>{
 }
 
 export const fetchSampleData = () => {
-    return delay(1000).then(()=>{
+    return delay(2000).then(()=>{
         return Promise.resolve(sampleData)
 
     })
