@@ -6,20 +6,19 @@ import {Link} from 'react-router-dom'
 
 class EventListItem extends Component {
     render () {
-        const {event, onEventOpen, deleteEvent} = this.props
+        const {event, deleteEvent} = this.props
     return(
              <Segment.Group>
                 <Segment>
                   <Item.Group>
                     <Item>
                       <Item.Image 
-                      as= 'a'size ='mini'
-                      circluar src={event.hostPhotoURL}/>
+                      size="tiny" circular src={event.hostPhotoURL} />
 
                       <Item.Content>
                         <Item.Header as="a">{event.title}</Item.Header>
                         <Item.Description>
-                          Hosted by <a>{event.date}</a>
+                          Hosted by <Link to ={event.hostedBy}></Link>
                         </Item.Description>
                       </Item.Content>
                     </Item>

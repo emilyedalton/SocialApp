@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Segment, List, Item, Label} from 'semantic-ui-react'
 
 // import { Grid, Button} from 'semantic-ui-react'

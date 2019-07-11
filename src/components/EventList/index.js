@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Button, Container, Menu} from 'semantic-ui-react'
 import EventListItem from '../EventListItem'
 
 

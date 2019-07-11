@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Link as Router} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import 'semantic-ui-css/semantic.min.css'
 import App from './App';

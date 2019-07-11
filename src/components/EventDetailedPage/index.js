@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React from 'react'
 import DetailHeader from '../DetailHeader'
 import EventInfo from '../EventInfo'
 import Attendees from '../Attendees'
 import Comments from '../Comments'
-import { Grid, Button} from 'semantic-ui-react'
+import { Grid} from 'semantic-ui-react'
 
 import {connect} from 'react-redux'
 
@@ -19,11 +19,6 @@ const mapState =(state, ownProps) => {
         event
     }
 }
-// import { connect } from 'react-redux'
-// import EventList from '../EventList'
-// import EventForm from '../EventForm';
-// import cuid from 'cuid'
-// import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
 const EventDetailedPage = ({event}) =>{

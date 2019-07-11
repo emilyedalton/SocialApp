@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Button, Container, Header, Segment, Grid} from 'semantic-ui-react'
+import {Button, Container, Header} from 'semantic-ui-react'
 import  './style.css'
 
 const Home =({history})=> {
