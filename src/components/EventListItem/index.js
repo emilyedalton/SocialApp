@@ -26,16 +26,14 @@ class EventListItem extends Component {
                 </Segment>
                 <Segment>
                   <span>
-                    <Icon name="clock" /> {event.date} |
+                    {/* <Icon name="clock" /> {event.date} | */}
                     <Icon name="marker" /> {event.venue}
                   </span>
                 </Segment>
                 <Segment secondary>
-                  <List horizontal>
-                  {event.attendees && event.attendees.map((attendees)=>(
-<EventAttendee
-key={attendees.id} attendee ={attendees}
-/>
+                <List horizontal>
+            {event.attendees &&   Object.values(event.attendees).map((attendee, index) => (
+                <EventAttendee key={index} attendee={attendee} />
 
 ))}
                   

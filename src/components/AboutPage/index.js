@@ -7,7 +7,6 @@ class AboutPage extends Component {
     return(
         
          <h1>About Page</h1>   
-         <h2>more info</h2> 
     )
     
     }
