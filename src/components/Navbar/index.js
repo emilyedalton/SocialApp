@@ -62,6 +62,16 @@ this.props.history.push('/')
                    inverted content="Create" />
                  }
                  </Menu.Item>
+                 <Menu.Item>
+
+{authenticated &&
+  <Button 
+  as={NavLink} 
+  to='/people' 
+  floated="right"  
+  inverted content="People" />
+}
+</Menu.Item>
     {authenticated ?(<SignIn currentUser={auth.currentUser} signOut={this.handleSignOut}/> 
                  ):(
                  <SignOut signIn={this.handleSignIn} register ={this.handleRegister}/> 
