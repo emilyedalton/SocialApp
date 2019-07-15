@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Modal} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
-import Register from '../components/Login';
+import Register from '../components/Register'
 import {closeModal} from "./ModalActions";
 const actions = {closeModal};
 
