@@ -13,12 +13,14 @@ class EventListItem extends Component {
                   <Item.Group>
                     <Item>
                       <Item.Image 
-                      size="tiny" circular src={event.hostPhotoURL} />
+                      size="tiny" circular src={event.hostphotoURL} />
 
                       <Item.Content>
                         <Item.Header as="a">{event.title}</Item.Header>
                         <Item.Description>
-                          Hosted by <Link to ={event.hostedBy}></Link>
+                         <h4> Hosted by {event.hostedBy}</h4> 
+                          {/* <Link to={event.hostedBy}></Link> */}
+                         <p>{event.description}</p> 
                         </Item.Description>
                       </Item.Content>
                     </Item>

@@ -94,9 +94,9 @@ const newEvent={
         <Segment>
             <Header sub color ='black' content='details'/>
                    <Form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-                     <Field name ='title' type='text' component={TextInput} placeholder='Event Title'/>
+                     <Field name ='title' type='text'  component={TextInput} placeholder='Event Title' disabled=""/>
                      <Field name ='category' type='text' options={category} multiple={true}component={SelectInput} placeholder='Event category'/>
-                     <Field name ='description' type='text' rows={12} component={TextArea} placeholder='Event description'/>
+                     <Field name ='description'  type='text' rows={12} component={TextArea} placeholder='Event description'/>
                     
                      <Header sub color ='black' content='location information'/>
 
