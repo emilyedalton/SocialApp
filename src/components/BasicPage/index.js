@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Segment, Form, Header, Divider, Button} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
+import RadioInput from '../../common/form/RadioInput'
 // import DateInput from "../../../app/common/form/DateInput";
 // import PlaceInput from "../../../app/common/form/PlaceInput";
 import TextInput from "../../common/form/TextInput.js";
@@ -21,6 +22,13 @@ class BasicPage extends Component {
                         placeholder='Known As'
                     />
                     <Form.Group inline>
+                    <Field
+                    name='choices'
+                    type='radio'
+                    value='a or b?'
+                    label='a or b?'
+                    component = {RadioInput}
+                    />
                       {/* todo: Gender Radio button */}
                     </Form.Group>
                     <Field
