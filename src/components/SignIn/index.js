@@ -1,11 +1,12 @@
 import React from 'react'
-import {Dropdown, Menu }from 'semantic-ui-react'
+import {Dropdown, Menu, Image }from 'semantic-ui-react'
 
-const SignIn = ({signOut, auth}) =>{
+const SignIn = ({signOut, profile}) =>{
 return (
 
        <Menu.Item position="right">
-         <Dropdown pointing="top left" text={auth.email}>
+       <Image avatar spaced="right" src={profile.photURL || "/assets/user.png"}/>
+         <Dropdown pointing="top left" text={profile.displayName}>
            <Dropdown.Menu>
              <Dropdown.Item text="Create Event" icon="plus" />
              <Dropdown.Item text="My Events" icon="calendar" />

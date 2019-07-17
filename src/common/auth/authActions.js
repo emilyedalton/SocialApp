@@ -39,7 +39,9 @@ export const login = cred => {
             await firestore.set(`users/${createdUser.user.uid}`, {...newUser})
             dispatch(closeModal());
         }catch (error){
-            console.log(error)
+            throw new SubmissionError({
+                _error: error.message
+            })
 
         }
 
