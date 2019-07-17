@@ -1,6 +1,7 @@
-import {SubmissionError} from 'redux-form'
+import {SubmissionError,reset} from 'redux-form'
 // import {SIGN_OUT_USER} from './authConst'
 import {closeModal} from '../../modals/ModalActions'
+import {toastr} from 'react-redux-toastr'
 
 
 export const login = cred => {
@@ -46,7 +47,20 @@ export const login = cred => {
         }
 
     }
-
+    export const updatePassword = (cred) => 
+    async (dispatch, getState, {getFirebase}) => {
+      const firebase = getFirebase();
+      const user = firebase.auth().currentUser;
+      try {
+        await user.updatePassword(cred.newPassword1);
+        await dispatch(reset('account'));
+        toastr.success('Success', 'Your password has been updated')
+      } catch (error) {
+        throw new SubmissionError({
+          _error: error.message
+        })
+      }
+    }
     // return dispatch => {
     //     dispatch({type: LOGIN_USER, payload:{
     //         cred

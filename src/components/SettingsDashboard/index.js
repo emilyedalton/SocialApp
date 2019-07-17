@@ -1,27 +1,41 @@
-import React, {Component} from 'react'
+import React from 'react'
 import AboutPage from '../AboutPage'
 import AccountPage from '../AccountPage'
-import BasicPage from '../BasicPage'
+import BasicPage from '../BasicPage/'
 import PhotosPage from '../PhotosPage'
 import SettingsNav from '../SettingsNav'
-import {Route} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import {Grid} from 'semantic-ui-react'
+import {connect} from 'react-redux'
+import {updatePassword} from '../../common/auth/authActions'
 
+const actions ={
+    updatePassword
+}
 
+const mapState = (state)=>({
+    user: state.firebase.profile
 
+})
 
-class SettingsDashbboard extends Component {
-    render () {
+const SettingsDashboard =({updatePassword, user}) => {
     return(
-        <div>
-         <h1>Settings Dashboard</h1>    
-         <Grid>
+        <Grid>
         <Grid.Column width ={12}>
-        <Route path='/settings/basic' component={BasicPage}/>
+        <Switch>
+        <Route path='/settings/basic' render={()=><BasicPage initialValues={user}/>} />    
         <Route path='/settings/about' component={AboutPage}/>
         <Route path='/settings/photos' component={PhotosPage}/>
         <Route path='/settings/account' component={AccountPage}/>
-
+        <Route
+            path='/settings/account'
+            render={() => (
+              <AccountPage
+                updatePassword={updatePassword}
+              />
+            )}
+            />
+</Switch>
 
 
 <Grid.Column width={4}>
@@ -30,11 +44,13 @@ class SettingsDashbboard extends Component {
         </Grid.Column>
 
          </Grid>
-         </div>
     )
     
     }
     
     
-    }
-    export default SettingsDashbboard 
+    
+    export default connect(
+      mapState,
+      actions
+    )(SettingsDashboard)
