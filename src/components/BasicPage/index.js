@@ -6,16 +6,16 @@ import DateInput from '../../common/form/DateInput'
 import {addYears} from 'date-fns'
 // import DateInput from "../../../app/common/form/DateInput";
 // import PlaceInput from "../../../app/common/form/PlaceInput";
-import TextInput from "../../common/form/TextInput.js";
+import TextInput from '../../common/form/TextInput.js'
 
 class BasicPage extends Component {
 
     render() {
-        const {pristine, submitting} = this.props;
+        const {pristine, submitting, handleSubmit, updateProfile} = this.props;
         return (
             <Segment>
-                <Header dividing size='large' content='Basics' />
-                <Form>
+                <Header dividing size='large' content='Basics'/>
+                <Form onSubmit={handleSubmit(updateProfile)}>
                     <Field
                         width={8}
                         name='displayName'

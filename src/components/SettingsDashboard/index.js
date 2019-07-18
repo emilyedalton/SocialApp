@@ -8,9 +8,11 @@ import {Route, Switch, Redirect} from 'react-router-dom'
 import {Grid} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {updatePassword} from '../../common/auth/authActions'
+import {updateProfile} from '../../components/User/userActions'
 
 const actions ={
-    updatePassword
+    updatePassword,
+    updateProfile
 }
 
 const mapState = (state)=>({
@@ -18,12 +20,12 @@ const mapState = (state)=>({
 
 })
 
-const SettingsDashboard =({updatePassword, user}) => {
+const SettingsDashboard =({updatePassword, user, updateProfile}) => {
     return(
         <Grid>
         <Grid.Column width ={12}>
         <Switch>
-        <Route path='/settings/basic' render={()=><BasicPage initialValues={user}/>} />    
+        <Route path='/settings/basic' render={()=><BasicPage initialValues={user} updateProfile={updateProfile}/>} />    
         <Route path='/settings/about' component={AboutPage}/>
         <Route path='/settings/photos' component={PhotosPage}/>
         <Route path='/settings/account' component={AccountPage}/>
