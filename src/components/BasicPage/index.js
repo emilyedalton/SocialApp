@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Segment, Form, Header, Divider, Button} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
 import RadioInput from '../../common/form/RadioInput'
+import DateInput from '../../common/form/DateInput'
+import {addYears} from 'date-fns'
 // import DateInput from "../../../app/common/form/DateInput";
 // import PlaceInput from "../../../app/common/form/PlaceInput";
 import TextInput from "../../common/form/TextInput.js";
@@ -25,8 +27,15 @@ class BasicPage extends Component {
                     <Field
                     name='choices'
                     type='radio'
-                    value='a or b?'
-                    label='a or b?'
+                    value='a'
+                    label='a'
+                    component = {RadioInput}
+                    />
+                     <Field
+                    name='choices'
+                    type='radio'
+                    value='b'
+                    label='b'
                     component = {RadioInput}
                     />
                       {/* todo: Gender Radio button */}
@@ -34,8 +43,13 @@ class BasicPage extends Component {
                     <Field
                         width={8}
                         name='dateOfBirth'
-                        component={TextInput}
+                        component={DateInput}
                         placeholder='Date of Birth'
+                        dateFormat ='dd LLL yyyy'
+                        showYearDrowdown={true}
+                        showMonthDrowpdown={true}
+                        drowpdownMode='select'
+                        maxDate={addYears(new Date(), 18)}
                     />
                     <Field
                         name='city'
