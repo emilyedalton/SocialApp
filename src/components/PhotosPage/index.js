@@ -1,10 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import {Image, Segment, Header, Divider, Grid, Button, Card} from 'semantic-ui-react';
 import DropZoneInput from './Dropzoneinput';
+import CropperInput from './CropperInput';
+import {connect} from 'react-redux'
+import {firebaseConnect} from 'react-redux-firebase'
+import {uploadProfileImage} from '../User/userActions'
+import {toastr} from 'react-redux-toastr'
 
-const PhotosPage =() => {
+const actions ={
+    uploadProfileImage
+}
+
+const PhotosPage =({uploadProfileImage}) => {
 
     const[files, setFiles]= useState([])
+    const [image, setImage]=useState(null)
 
     useEffect(()=>{
         return  () =>{
@@ -13,6 +23,21 @@ const PhotosPage =() => {
 
     }, [files])
     
+    const handleUploadImage = async () => {
+        try {
+          await uploadProfileImage(image, files[0].name);
+          handleCancelCrop();
+          toastr.success('Success', 'Photo has been uploaded');
+        } catch (error) {
+          toastr.error('Oops', 'Something went wrong');
+        }
+      };
+
+const handleCancelCrop = () =>{
+setFiles([])
+setImage(null)
+
+    }
         return (
             <Segment>
                 <Header dividing size='large' content='Your Photos' />
@@ -25,17 +50,30 @@ const PhotosPage =() => {
                     <Grid.Column width={1} />
                     <Grid.Column width={4}>
                         <Header sub color='teal' content='Step 2 - Resize image' />
+                        {files.length > 0 &&
+                        <CropperInput setImage={setImage}  imagePreview={files[0].preview}/>}
                     </Grid.Column>
                     <Grid.Column width={1} />
                     <Grid.Column width={4}>
                         <Header sub color='teal' content='Step 3 - Preview + Upload' />
-                        {files.length > 0 && 
-                        <Image src={files[0].preview} style={{minHeight: '200px', minWidth: '200px'}}/>
-                        }
+                        {files.length > 0 && (
+                        <Fragment>
+                        <div
+                                className='img-preview'
+                                style={{minHeight: '200px', minWidth: '200px', overflow:"hidden"}}
+                                />
+                                <Button.Group>
+                                <Button onClick={handleUploadImage} style={{width: '100px'}} icon='check'/>
+
+                                <Button onClick={handleCancelCrop} style={{width: '100px'}} icon='close'/>
+                                </Button.Group>
+                        </Fragment>
+)}
+
                     </Grid.Column>
 
                 </Grid>
-
+                        
                 <Divider/>
                 <Header sub color='teal' content='All Photos'/>
 
@@ -59,4 +97,4 @@ const PhotosPage =() => {
         );
     }
 
-export default PhotosPage;
+export default connect(null, actions)(PhotosPage);
