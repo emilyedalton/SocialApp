@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import {Button, Card, Header, Image, Segment} from 'semantic-ui-react'
 
 
-const UserPhotos = ({photos, profile, deletePhoto}) =>{
+const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto}) =>{
   let filteredPhotos;
   if (photos) {
       filteredPhotos=photos.filter(photo => {
@@ -27,7 +27,7 @@ const UserPhotos = ({photos, profile, deletePhoto}) =>{
                         src={photo.url}
                     />
                     <div className='ui two buttons'>
-                        <Button basic color='green'>Main</Button>
+                        <Button onClick={()=> setMainPhoto(photo)} basic color='green'>Main</Button>
                         <Button onClick={() => deletePhoto(photo)} basic icon='trash' color='red' />
                     </div>
                 </Card>

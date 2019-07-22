@@ -5,7 +5,7 @@ import CropperInput from './CropperInput';
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
-import {uploadProfileImage, deletePhoto} from '../User/userActions'
+import {uploadProfileImage, deletePhoto, setMainPhoto} from '../User/userActions'
 import {toastr} from 'react-redux-toastr'
 import UserPhotos from './UserPhotos';
 
@@ -23,7 +23,8 @@ const query = ({auth})=>{
 
 const actions ={
     uploadProfileImage,
-    deletePhoto
+    deletePhoto, 
+    setMainPhoto
 }
 
 const mapState = (state) => ({
@@ -32,7 +33,7 @@ const mapState = (state) => ({
     photos: state.firestore.ordered.photos
 })
 
-const PhotosPage =({uploadProfileImage, photos, profile, deletePhoto}) => {
+const PhotosPage =({uploadProfileImage, photos, profile, deletePhoto, setMainPhoto}) => {
 
     const[files, setFiles]= useState([])
     const [image, setImage]=useState(null)
@@ -66,6 +67,16 @@ const handleDeletePhoto = async (photo) => {
 
     }catch (error){
         toastr.error('Photo Deletion Error', error.message)
+    }
+}
+
+const handleSetMainPhoto = async (photo) => {
+    try{
+    await setMainPhoto(photo)
+
+
+    }catch (error){
+        toastr.error('Photo setting Error', error.message)
     }
 }
         return (
@@ -105,7 +116,7 @@ const handleDeletePhoto = async (photo) => {
                 </Grid>
                         
                 <Divider/>
-               <UserPhotos photos={photos} profile={profile} deletePhoto={handleDeletePhoto}/>
+               <UserPhotos photos={photos} profile={profile} deletePhoto={handleDeletePhoto} setMainPhoto={handleSetMainPhoto} />
             </Segment>
         );
     }
