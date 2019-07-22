@@ -35,6 +35,7 @@ this.props.history.push('/')
     }
     render () {
         const {auth, profile} = this.props
+        const isAdmin = profile.choices
         const authenticated = auth.isLoaded && !auth.isEmpty;
     return(
              <Menu inverted fixed="top" style={{
@@ -65,8 +66,12 @@ this.props.history.push('/')
                  }
                  </Menu.Item>
                  <Menu.Item>
+{/* This is basically how to protect routes, do not change yet
 
-{authenticated &&
+if user is authenticated and isAdmin === "a" show this button. 
+
+I assigned this value to isAdmin below the render. Its  from choices in firebase  */}
+{authenticated && isAdmin ==="a" &&
   <Button 
   as={NavLink} 
   to='/people' 
