@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import {Container} from 'semantic-ui-react'
 import EventDetailedPage from './components/EventDetailedPage';
 import ModalManager from './modals/ModalManager'
+import UserDashboard from './components/UserDetails/UserDashboard';
 
 class App extends Component {
   render (){
@@ -35,7 +36,7 @@ class App extends Component {
       <Route path ='/event/:id' component={EventDetailedPage}/>
       <Route path ='/manage/:id' component={EventForm}/>
       <Route path ='/people' component={PeopleDashboard}/>
-      <Route path ='/profile/:id' component={UserDetails}/>
+      <Route path ='/profile/:id' component={UserDashboard}/>
 
       <Route path ='/events/:id' component={EventDashboard}/>
 

@@ -79,7 +79,7 @@ I assigned this value to isAdmin below the render. Its  from choices in firebase
   inverted content="People" />
 }
 </Menu.Item>
-    {authenticated ?(<SignIn profile={profile} signOut={this.handleSignOut}/> 
+    {authenticated ?(<SignIn auth={auth} profile={profile} signOut={this.handleSignOut}/> 
                  ):(
                  <SignOut signIn={this.handleSignIn} register ={this.handleRegister}/> 
                  
