@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
-import {Button, Card, Grid, Header, Icon, Image, Item, List, Menu, Segment} from "semantic-ui-react";
-import {connect} from 'react-redux'
-import {firestoreConnect} from 'react-redux-firebase'
+import { compose} from 'redux'
+import {connect}from 'react-redux'
 import UserHeader from './userHeader'
+import UserInfo from './UserInfo'
+import DetailPhotos from './DetailPhotos'
+import { firestoreConnect } from 'react-redux-firebase';
+
+const query = ({auth})=>{
+    return [
+        {
+            collection: 'users',
+            doc: auth.uid,
+            subcollections: [{collection: 'photos'}],
+            storeAs: 'photos'
+        }
+    ]
+
+}
 
 const mapState = (state)=>({
     auth: state.firebase.auth,
@@ -12,19 +26,23 @@ const mapState = (state)=>({
 
 })
 
-const UserDashboard  = ({profile, photos}) =>{
+const UserDashboard  = ({profile, photos, auth}) =>{
 
     
 
 return(
-
+<div>
 <UserHeader profile={profile} photos={photos}/>
+<UserInfo profile={profile} photos={photos}/>
+<DetailPhotos profile={profile} photos={photos} auth={auth} />
+</div>
 )
 
     }
 
 
 
-export default connect(
-    mapState,
+export default compose(
+    connect(mapState),
+    firestoreConnect(auth => query(auth)),
   )(UserDashboard)

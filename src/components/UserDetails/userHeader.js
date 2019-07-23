@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header, Form, Divider, Label, Button, Item, Grid } from 'semantic-ui-react';
+import { Segment, Header, Item, Grid } from 'semantic-ui-react';
 
 const UserHeader = ({profile, photos}) => {
     return (
