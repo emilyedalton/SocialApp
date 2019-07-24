@@ -3,6 +3,7 @@ import { Segment, Header, Item, Grid, Icon, List } from 'semantic-ui-react';
 
 const UserInfo = ({profile, photos}) => {
     return (
+    
 
 <Grid.Column width={12}>
                      <Segment>
@@ -15,30 +16,27 @@ const UserInfo = ({profile, photos}) => {
                                  <p>{profile.about}</p>
 
                              </Grid.Column>
-                             <Grid.Column width={6}>
 
-                                 <Header icon='heart outline' content='Interests'/>
-                                 <List>
-                                     <Item>
-                                         <Icon name='heart'/>
-                                         <Item.Content>Interest 1</Item.Content>
-                                     </Item>
-                                     <Item>
-                                         <Icon name='heart'/>
-                                         <Item.Content>Interest 2</Item.Content>
-                                     </Item>
-                                     <Item>
-                                         <Icon name='heart'/>
-                                         <Item.Content>Interest 3</Item.Content>
-                                     </Item>
-                                 </List>
-                             </Grid.Column>
-                         </Grid>
+              <Grid.Column width={6}>
+            <Header icon='heart outline' content='Interests' />
+            <List>
+              {profile.interests ? (
+                profile.interests.map((interest, index) => (
+                  <Item key={index}>
+                    <Icon name='heart' />
+                    <Item.Content>{interest}</Item.Content>
+                  </Item>
+                ))
+              ) : (
+                <p>No interests</p>
+              )}
+               
 
-                     </Segment>
-                     </Grid.Column> 
-
-);
+</List>
+</Grid.Column>
+        </Grid>
+      </Segment>
+    </Grid.Column>
+  );
 };
-
 export default UserInfo;

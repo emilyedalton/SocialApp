@@ -9,10 +9,7 @@ const DetailPhotos = ({photos}) =>{
 <Grid>
     <Grid.Column width={12}>
         <Image.Group size="small">
-            {/* <Card>
-                <Image src={profile.photoURL || '/assets/user.png'}/>
-                <Button positive>Main Photo</Button>
-            </Card> */}
+           
             {photos && photos.map(photo => 
 
 
