@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Button, Form, Segment, Grid, Header, Label } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
@@ -63,10 +63,10 @@ class EventForm extends Component {
         this.props.openModal('LoginModal')
     }
     handleTrade= (value)=>{
-        this.setState({isTrade: null})
+        this.setState({isTrade: true})
     }
     handleScholar= (value)=>{
-        this.setState({isTrade: "somevalue"})
+        this.setState({isTrade: false})
     }
 
     handleSubmit = (values) => {
@@ -126,14 +126,13 @@ class EventForm extends Component {
                     </Form.Group>
                             <Header color='black' content='Name as you would like it to appear on the title page' />
                             
-                            {this.state.isTrade !== null? (
+                            
                             <Field name='fullAuthor'
                              type='text' 
                              component={TextInput} 
                              placeholder='Name as you would like it to appear on the title page' 
                              disabled={this.state.isTrade}
                              />
-                            ):<h1>Will it work</h1>}
                             <Header  color='black' content='Legal Name' />
                              <Form.Group inline>
                              <Field name='lastName'
@@ -163,16 +162,67 @@ class EventForm extends Component {
                              <p> This information is required for some awards nominations.</p>
                             <Field name='What country or countries are you a citizen of?' 
                             type='text' component={TextInput} 
-                            placeholder='What country or countries are you a citizen of?' disabled={category==="trade"}
+                            placeholder='What country or countries are you a citizen of?' disabled=''
                              />
-                            <Field name='titleofBook' type='text' component={TextArea} placeholder='Working Title and Subtitle of the Book' disabled="" />
+                         <Header color='black' content='Working Title and Subtitle of the Book' />
 
-                            <Field name='titleofBook' type='text' component={TextArea} placeholder='Working Title and Subtitle of the Book' disabled="" />
-                            <Field name='description' type='text' rows={12} component={TextArea} placeholder='Event description' />
+                            <Field name='titleofBook' 
+                             type='text' component={TextArea}
+                             placeholder='Working Title and Subtitle of the Book' 
+                             disabled="" />
+                            
+                            <Header color='black' content='Please list here any social media accounts or handles that we may use for book marketing:'/>
 
-                            <Header sub color='black' content='location information' />
+                            <Field name='social' 
+                            type='text' 
+                            component={TextInput} 
+                            placeholder='Please list here any social media accounts or handles that we may use for book marketing:' 
+                            disabled="" />
+                            
 
-                            <Field name='city' type='text' component={TextInput} placeholder='Event city' />
+                            <Header  color='black' content='Please provide a 150-200 word description of the book written for a nonspecialist academic audience' />
+                            <p>This description will be the starting point for the book description on the back of the book, in our catalog, on our website, and oan Amazon and other online retailers. Please (a) write the text in the third person, (b) use short, declarative sentences, (c) identify the audience for the book, and (d) use relevant keywords. </p>
+                            <Field name='scholarlyDesc' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='Please provide a 150-200 word description of the book written for a nonspecialist academic audience' />
+                            
+                            <Header  color='black' content='Please provide an author bio of up to 60 words prioritizing current academic affiliations, past publications, and any awards you have received.' />
+
+                            <Field name='authorBio' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='Please provide an author bio of up to 60 words prioritizing current academic affiliations, past publications, and any awards you have received.' />
+
+                         <Header  color='black' content='Please provide a list of 3-5 prominent writers or scholars who you think might be willing to write an endorsement of your book for use on the book and online. Please provide an email address whenever possible' />
+                            <Field name='blurber' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='Please provide a list of 3-5 prominent writers or scholars who you think might be willing to write an endorsement of your book for use on the book and online. Please provide an email address whenever possible' />
+                            
+                            {this.state.isTrade !== true ? (
+                                <Fragment>
+   <Header color='black' content='Please list as many as ten journals that you think might publish a review of your book. Please also note any contacts you have at these publications. Please rank them in order of importance:'/>
+                            <Field name='scholarReviewers' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='Please list as many as ten journals that you think might publish a review of your book. Please also note any contacts you have at these publications. Please rank them in order of importance:'/>
+                            </Fragment>      
+                                                  ):
+<Fragment>
+<Header color='red' content='Please list as many as 20 periodicals or book review venues in any medium that you think might publish a review of your book.. Please also note any contacts you have at these publications. Please rank them in order of importance:' />
+
+                            <Field name='tradeReviewers' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='Please list as many as 20 periodicals or book review venues in any medium that you think might publish a review of your book.. Please also note any contacts you have at these publications. Please rank them in order of importance:'/>
+                            </Fragment>
+                        }
                             <Field name='venue' type='text' component={TextInput} placeholder='Event venue' />
                             <Field name='date' type='text' component={TextInput} placeholder='Event date' />
                             <Button disabled={invalid || submitting || pristine} positive type="submit">
