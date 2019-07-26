@@ -32,14 +32,7 @@ const actions = {
     openModal
 }
 
-const category = [
-    { key: 'trade', text: 'Trade', value: 'trade' },
-    { key: 'scholarly', text: 'Scholarly', value: 'scholarly' }
-    // {key: 'film', text: 'Film', value: 'film'},
-    // {key: 'food', text: 'Food', value: 'food'},
-    // {key: 'music', text: 'Music', value: 'music'},
-    // {key: 'travel', text: 'Travel', value: 'travel'},
-];
+
 
 const validate = combineValidators({
     title: isRequired({ message: 'The field is required' }),
@@ -220,11 +213,66 @@ class EventForm extends Component {
                             type='text' 
                             rows={12}
                             component={TextArea} 
-                            placeholder='Please list as many as 20 periodicals or book review venues in any medium that you think might publish a review of your book.. Please also note any contacts you have at these publications. Please rank them in order of importance:'/>
+                            placeholder='Please list as many as 20 periodicals or book review venues in any medium that you think might publish a review of your book.Please also note any contacts you have at these publications. Please rank them in order of importance:'/>
                             </Fragment>
                         }
-                            <Field name='venue' type='text' component={TextInput} placeholder='Event venue' />
-                            <Field name='date' type='text' component={TextInput} placeholder='Event date' />
+                        <Header color='black' content='Please provide the first and last name, title, and email address of the public information or marketing person at your institution or academic department. We will send them a book announcement.' />
+
+                        <Form.Group inline>
+
+                            <Field 
+                            name='pubInfoLastname' 
+                            type='text' 
+                            component={TextInput} 
+                            placeholder='Last Name' />
+
+                            <Field 
+                            name='pubInfoFirstname' 
+                            type='text' 
+                            component={TextInput} 
+                            placeholder='First Name' />
+
+                            <Field 
+                            name='pubInfoEmail' 
+                            type='text' 
+                            component={TextInput} 
+                            placeholder='Email' />
+                            </Form.Group>
+
+                            <Header color='black' content='Please organize book launch events no sooner than four weeks after the publication date. Please list here any book launches, readings, book festivals, or conferences you plan to organize or attend during the 12 months after the publication date. Please identify in particular the locations and dates of any overseas events you plan to participate in.' /> 
+                            <Field name='bookLanuches'
+                             type='text' 
+                             component={TextArea} 
+                             placeholder='Please organize book launch events no sooner than four weeks after the publication date. Please list here any book launches, readings, book festivals, or conferences you plan to organize or attend during the 12 months after the publication date. Please identify in particular the locations and dates of any overseas events you plan to participate in.' />
+                            
+                            {this.state.isTrade !== true ? (
+                                <Fragment>
+   <Header color='black' content='We have a budget of 5-7 books for use as award submissions. Please list in order of importance awards for which your book is eligible and for which you’d like the book submitted. If you’d like the book submitted for additional awards, you may do so through the purchase of copies at your author discount.'/>
+                            <Field name='scholarAwardSub' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='We have a budget of 5-7 books for use as award submissions. Please list in order of importance awards for which your book is eligible and for which you’d like the book submitted. If you’d like the book submitted for additional awards, you may do so through the purchase of copies at your author discount.'/>
+                            </Fragment>      
+                                                  ):
+                        <Fragment>
+                        <Header color='red' content='We have a budget of 12-15 books for use as award submissions. Please list in order of importance awards for which your book is eligible and for which you’d like the book submitted. If you’d like the book submitted for additional awards, you may do so through the purchase of copies at your author discount.' />
+
+                            <Field name='tradeAwardSub' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='We have a budget of 12-15 books for use as award submissions. Please list in order of importance awards for which your book is eligible and for which you’d like the book submitted. If you’d like the book submitted for additional awards, you may do so through the purchase of copies at your author discount.'/>
+                            </Fragment>
+                        }
+                     <Header color='black' content='Please provide the first and last name, title, and email address of the public information or marketing person at your institution or academic department. We will send them a book announcement.' />
+                        <Field name='tradeAwardSub' 
+                            type='text' 
+                            rows={12}
+                            component={TextArea} 
+                            placeholder='We have a budget of 12-15 books for use as award submissions. Please list in order of importance awards for which your book is eligible and for which you’d like the book submitted. If you’d like the book submitted for additional awards, you may do so through the purchase of copies at your author discount.'/>
+
+
                             <Button disabled={invalid || submitting || pristine} positive type="submit">
                                 Submit
                      </Button>
