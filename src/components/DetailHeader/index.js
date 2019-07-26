@@ -17,15 +17,15 @@ const DetailHeader =({event})=> {
               <Item.Content>
                 <Header
                   size="huge"
-                  content={event.title}
+                  content={event.titleofBook}
                   style={{ 
                     
                     color: 'White' 
                 }}
                 />
-                <p>{event.date}</p>
+                <p>{event.bookDesc}</p>
                 <p>
-                  Hosted by <strong>{event.hostedBy}</strong>
+                  Hosted by <strong>{event.fullAuthor}</strong>
                 </p>
               </Item.Content>
             </Item>

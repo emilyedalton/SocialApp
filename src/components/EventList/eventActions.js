@@ -16,7 +16,6 @@ export const createEvent = (event) => {
         await firestore.set(`event_attendee/${createdEvent.id}_${user.uid}`, {
         eventId: createdEvent.id,
         userUid: user.uid,
-        // eventDate: event.date,
         host: true
       });
     toastr.success('Success', 'event has been created')
