@@ -318,7 +318,7 @@ class EventForm extends Component {
                 content="Please organize book launch events no sooner than four weeks after the publication date. Please list here any book launches, readings, book festivals, or conferences you plan to organize or attend during the 12 months after the publication date. Please identify in particular the locations and dates of any overseas events you plan to participate in."
               />
               <Field
-                name="bookLanuches"
+                name="bookLaunches"
                 type="text"
                 component={TextArea}
                 placeholder="Please organize book launch events no sooner than four weeks after the publication date. Please list here any book launches, readings, book festivals, or conferences you plan to organize or attend during the 12 months after the publication date. Please identify in particular the locations and dates of any overseas events you plan to participate in."
