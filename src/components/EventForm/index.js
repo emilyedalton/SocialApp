@@ -15,14 +15,17 @@ import TextArea from "../../common/form/TextArea";
 import RadioInput from "../../common/form/RadioInput";
 import SelectInput from "../../common/form/SelectInput";
 import { openModal } from "../../modals/ModalActions";
+import {withFirestore} from 'react-redux-firebase'
+import toastr from 'react-redux-toastr'
 
 const mapState = (state, ownProps) => {
   const eventID = ownProps.match.params.id;
   let event = {};
 
-  if (eventID && state.events.length > 0) {
-    event = state.events.filter(event => event.id === eventID)[0];
-  }
+  if (state.firestore.ordered.events && state.firestore.ordered.events.length >0){
+    event = state.firestore.ordered.events.filter(event => event.id === eventID)[0] || {}
+
+}
   return {
     initialValues: event
   };
@@ -47,14 +50,25 @@ const validate = combineValidators({
 });
 
 class EventForm extends Component {
+
+    
   state = {
     event: Object.assign({}, this.props.event),
     isTrade: ""
   };
 
-  componentDidMount() {
-    this.props.openModal("LoginModal");
+  async componentDidMount() {
+    const { firestore, match } = this.props;
+    await firestore.setListener(`events/${match.params.id}`);
   }
+
+  async componentWillUnmount() {
+    const { firestore, match } = this.props;
+    await firestore.unsetListener(`events/${match.params.id}`);
+  }
+//   componentDidMount() {
+//     this.props.openModal("LoginModal");
+//   }
   handleTrade = value => {
     this.setState({ isTrade: true });
   };
@@ -409,11 +423,11 @@ class EventForm extends Component {
   }
 }
 
-export default connect(
+export default withFirestore( connect(
   mapState,
   actions
 )(
   reduxForm({ form: "eventForm}", enableReinitialize: true, validate })(
     EventForm
   )
-);
+));
