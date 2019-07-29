@@ -5,6 +5,7 @@ import PeopleDashboard from './components/PeopleDashboard'
 import UserDetails from './components/UserDetails/'
 import SettingsDashboard from './components/SettingsDashboard/'
 import Home from './components/Home/'
+import Welcome from './components/Welcome'
 import Test from './components/Test/'
 import { Route,Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
@@ -12,6 +13,12 @@ import {Container} from 'semantic-ui-react'
 import EventDetailedPage from './components/EventDetailedPage';
 import ModalManager from './modals/ModalManager'
 import UserDashboard from './components/UserDetails/UserDashboard';
+import {withFirebase} from 'react-redux-firebase'
+
+const mapState = (state)=>({
+  auth:state.firebase.auth, 
+  profile: state.firebase.profile
+})
 
 class App extends Component {
   render (){
@@ -31,6 +38,7 @@ class App extends Component {
   <Navbar/>
     <Container className="main">
       <Switch>
+      <Route path ='/welcome' component={Welcome}/>
       <Route path ='/events' component={EventDashboard}/>
       <Route path ='/test' component={Test}/>
       <Route path ='/event/:id' component={EventDetailedPage}/>

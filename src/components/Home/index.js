@@ -19,8 +19,8 @@ const Home =({history})=> {
              color: "#4E2A84"
          }}
          />  
-         <Button onClick={()=>history.push('/events')}
-         basic content="Go Somewhere"
+         <Button onClick={()=>history.push('/welcome')}
+         basic content="Get Started"
          />
          </Container>
          </div>

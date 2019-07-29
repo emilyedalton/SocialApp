@@ -38,14 +38,17 @@ await firestore.update(`events/${event.id}`, event)
     }
 }
 };
-export const deleteEvent = (eventID) => {
-    return {
-        type: DELETE_EVENT,
-        payload:{
-            eventID
-        }
+export const deleteEvent = (event) => {
+    return async (dispatch, getState, {getFirestore} )=>{
+        const firestore = getFirestore()
+        try{
+await firestore.remove(`events/${event.id}`)
+    toastr.success('Success', 'event has been updated')
+} catch (error){
+    toastr.error('oops', 'something went wrong')
     }
 }
+};
 
 export const fetchEvent = (events) => {
     return {

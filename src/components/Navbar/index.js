@@ -30,12 +30,12 @@ class Navbar extends Component {
     }
 
     handleSignOut =()=>{
-       this.props.firebase.logout()
-this.props.history.push('/')
+        this.props.firebase.logout()
+        this.props.history.push('/')
     }
     render () {
         const {auth, profile} = this.props
-        const isAdmin = profile.choices
+        const isAdmin = profile.admin
         const authenticated = auth.isLoaded && !auth.isEmpty;
     return(
              <Menu inverted fixed="top" style={{
@@ -46,14 +46,20 @@ this.props.history.push('/')
                  <Menu.Item header>
                  </Menu.Item>
                  <Menu.Item  as={NavLink} to='/' name="Home"/>
-                 {authenticated &&(
+                 {authenticated && isAdmin==="yes"&&(
                      <Fragment>
 
                  <Menu.Item  
                  as={NavLink} 
                  to='/people' 
                  name="People"/>
+
+                 <Menu.Item
+                  as={NavLink} 
+                  to='/events' 
+                  name="Titles"/>
                  </Fragment>
+                 
                      )}
                  <Menu.Item>
 
@@ -65,21 +71,21 @@ this.props.history.push('/')
                    inverted content="Create" />
                  }
                  </Menu.Item>
-                 <Menu.Item>
 {/* This is basically how to protect routes, do not change yet
 
 if user is authenticated and isAdmin === "a" show this button. 
 
-I assigned this value to isAdmin below the render. Its  from choices in firebase  */}
-{authenticated && isAdmin ==="a" &&
+I assigned this value to isAdmin below the render. Its from admin in firebase  */}
+{/* <Menu.Item>
+{authenticated && isAdmin ==="yes" &&
   <Button 
   as={NavLink} 
   to='/people' 
   floated="right"  
   inverted content="People" />
 }
-</Menu.Item>
-    {authenticated ?(<SignIn auth={auth} profile={profile} signOut={this.handleSignOut}/> 
+</Menu.Item> */}
+    {authenticated ?(<SignIn auth={auth}profile={profile} signOut={this.handleSignOut}/> 
                  ):(
                  <SignOut signIn={this.handleSignIn} register ={this.handleRegister}/> 
                  

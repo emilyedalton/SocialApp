@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Button, Form, Segment, Grid, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
-import { createEvent, updateEvent } from "../EventList/eventActions";
+import { createEvent, updateEvent, deleteEvent } from "../EventList/eventActions";
 import {
   composeValidators,
   combineValidators,
@@ -33,6 +33,7 @@ const mapState = (state, ownProps) => {
 const actions = {
   createEvent,
   updateEvent,
+  deleteEvent,
   openModal
 };
 
@@ -89,13 +90,19 @@ class EventForm extends Component {
             this.props.history.push(`/events/${createdEvent.id}`);
           }
 
-
       }catch{
         console.log(this)
 
       }
    
   };
+
+  // handleDelete = async values => {
+  //    this.props.deleteEvent(values);
+  //   this.props.history.push(`/events`)
+   
+   
+  // };
 
   render() {
     const { invalid, submitting, pristine } = this.props;
@@ -411,9 +418,15 @@ class EventForm extends Component {
               >
                 Submit
               </Button>
+              {/* <Button
+                positive
+                type="submit"
+              >
+                Delete
+              </Button>
               <Button onClick={this.props.history.goBack} type="button">
                 Cancel
-              </Button>
+              </Button> */}
             </Form>
           </Segment>
         </Grid.Column>

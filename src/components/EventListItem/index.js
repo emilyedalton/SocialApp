@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Item, Segment, Icon, List} from 'semantic-ui-react'
+import {Button, Item, Segment, Icon, List, Label} from 'semantic-ui-react'
 import EventAttendee from '../EventAttendee'
 import {Link} from 'react-router-dom'
 
@@ -11,28 +11,25 @@ class EventListItem extends Component {
              <Segment.Group>
                 <Segment>
                   <Item.Group>
+                  <Label as='p' color='black' image>
+                {event.choices}</Label>
                     <Item>
                       <Item.Image 
-                      size="tiny" circular src={event.hostphotoURL} />
+                      size="tiny" circular src={event.photoURL} />
 
                       <Item.Content>
-                        <Item.Header as="a">{event.title}</Item.Header>
+                        <Item.Header as="a">{event.titleofBook}</Item.Header>
                         <Item.Description>
-                         <h4> Hosted by {event.hostedBy}</h4> 
-                          {/* <Link to={event.hostedBy}></Link> */}
+                         <h4>by {event.fullAuthor}</h4> 
                          <p>{event.description}</p> 
                         </Item.Description>
                       </Item.Content>
                     </Item>
                   </Item.Group>
                 </Segment>
-                <Segment>
-                  <span>
-                    {/* <Icon name="clock" /> {event.date} | */}
-                    <Icon name="marker" /> {event.venue}
-                  </span>
-                </Segment>
-                <Segment secondary>
+                {/* <Segment>
+                </Segment> */}
+                {/* <Segment secondary>
                 <List horizontal>
             {event.attendees &&   Object.values(event.attendees).map((attendee, index) => (
                 <EventAttendee key={index} attendee={attendee} />
@@ -41,7 +38,7 @@ class EventListItem extends Component {
                   
                 
                   </List>
-                </Segment>
+                </Segment> */}
                 <Segment clearing>
 <span>{event.Description}</span>                  
 <Button as={Link} to ={`/event/${event.id}`}color="teal" floated="right" content="View" />
