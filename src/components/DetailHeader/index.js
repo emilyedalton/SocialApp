@@ -9,7 +9,8 @@ const DetailHeader =({event})=> {
     return(
         <div>
    <Segment.Group>
-      <Segment basic attached="top" style={{ padding: '0', background: "Purple" }}>
+      <Segment basic attached="top" style={{ padding: '0', background: "#4E2A84",
+ }}>
 
         <Segment basic>
           <Item.Group>
@@ -21,11 +22,13 @@ const DetailHeader =({event})=> {
                   style={{ 
                     
                     color: 'White' 
-                }}
-                />
-                <p>{event.bookDesc}</p>
-                <p>
-                  Hosted by <strong>{event.fullAuthor}</strong>
+                }}/>
+             
+                <p style={{ 
+                    
+                  color: 'White' 
+              }}>
+                 by <strong >{event.fullAuthor}</strong>
                 </p>
               </Item.Content>
             </Item>
@@ -34,11 +37,11 @@ const DetailHeader =({event})=> {
       </Segment>
 
       <Segment attached="bottom">
-        <Button>Cancel My Place</Button>
-        <Button color="teal">JOIN THIS EVENT</Button>
+        {/* <Button>Cancel My Place</Button> */}
+        <Button color="gray">Follow this Title</Button>
 
-        <Button as={Link} to={`/manage/${event.id}`}color="orange" floated="right">
-          Manage Event
+        <Button as={Link} to={`/manage/${event.id}`}color="gray" floated="right">
+          Manage Title
         </Button>
       </Segment>
     </Segment.Group>
