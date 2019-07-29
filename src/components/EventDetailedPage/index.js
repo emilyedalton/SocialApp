@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 import {withFirestore} from 'react-redux-firebase'
 import toastr from 'react-redux-toastr'
 import {objectToArray} from '../../common/util/helpers'
+import {attend} from '../User/userActions'
 const mapState =(state, ownProps) => {
     const eventID = ownProps.match.params.id;
 
@@ -23,6 +24,9 @@ const mapState =(state, ownProps) => {
     }
 }
 
+const actions = {
+attend
+}
 
 class EventDetailedPage extends Component{
         async componentDidMount() {
@@ -36,7 +40,7 @@ class EventDetailedPage extends Component{
           }
 
 render(){
-    const {event, auth} = this.props;
+    const {event, auth, attend} = this.props;
     const attendees = event && event.attendees && objectToArray(event.attendees)
     const isHost = event.hostUid === auth.uid; 
     const isGoing = attendees &&  attendees.some(a => a.id === auth.uid)
@@ -45,7 +49,7 @@ render(){
         <Grid>
         
         <Grid.Column width ={10}>
-        <DetailHeader event ={event}/>
+        <DetailHeader event ={event} attend={attend}/>
         <EventInfo event ={event}/>
         <Comments/>
         
@@ -68,4 +72,4 @@ render(){
 }
 
     
- export default withFirestore (connect(mapState)(EventDetailedPage))
+ export default withFirestore (connect(mapState, actions)(EventDetailedPage))

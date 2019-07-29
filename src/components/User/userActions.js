@@ -99,3 +99,30 @@ dispatch(asyncActionFinish)
             }
     
         }
+
+        export const attend = (event)=>
+        async(dispatch, getState,{getFirebase, getFirestore})=>{
+            const firestore = getFirestore();
+            const firebase = getFirebase(); 
+            const user = firebase.auth().currentUser;
+            const profile = getState().firebase.profile;
+            const attendee = {
+                going: true,
+                photoURL: profile.photoURL,
+                displayName: profile.displayName
+            }
+            try {
+                await firestore.update(`events/${event.id}`,{
+                    [`attendees.${user.uid}`]: attendee
+                }) 
+                await firestore.set(`event_attendee/${event.id}_${user.uid}`,{
+                    eventId: event.id,
+                    userUid: user.uid
+            
+                })
+            }  catch(error){
+                console.log(error)
+                toastr.error("error")
+            }
+
+        }

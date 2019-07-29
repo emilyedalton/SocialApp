@@ -3,7 +3,7 @@ import { Segment, Item, Header, Button} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 
-const DetailHeader =({event})=> {
+const DetailHeader =({event, attend})=> {
     
 
     return(
@@ -38,7 +38,7 @@ const DetailHeader =({event})=> {
 
       <Segment attached="bottom">
         {/* <Button>Cancel My Place</Button> */}
-        <Button color="gray">Follow this Title</Button>
+        <Button onClick={()=> attend(event)} color="gray">Follow this Title</Button>
 
         <Button as={Link} to={`/manage/${event.id}`}color="gray" floated="right">
           Manage Title
