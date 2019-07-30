@@ -4,8 +4,6 @@ import {Field, reduxForm} from 'redux-form';
 import RadioInput from '../../common/form/RadioInput'
 import DateInput from '../../common/form/DateInput'
 import {addYears} from 'date-fns'
-// import DateInput from "../../../app/common/form/DateInput";
-// import PlaceInput from "../../../app/common/form/PlaceInput";
 import TextInput from '../../common/form/TextInput.js'
 
 class BasicPage extends Component {

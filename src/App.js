@@ -39,7 +39,7 @@ class App extends Component {
     <Container className="main">
       <Switch>
       <Route path ='/welcome' component={Welcome}/>
-      <Route path ='/events' component={EventDashboard}/>
+      <Route path ='/titles' component={EventDashboard}/>
       <Route path ='/test' component={Test}/>
       <Route path ='/event/:id' component={EventDetailedPage}/>
       <Route path ='/manage/:id' component={EventForm}/>

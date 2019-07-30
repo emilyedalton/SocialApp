@@ -56,7 +56,7 @@ class Navbar extends Component {
 
                  <Menu.Item
                   as={NavLink} 
-                  to='/events' 
+                  to='/titles' 
                   name="Titles"/>
                  </Fragment>
                  

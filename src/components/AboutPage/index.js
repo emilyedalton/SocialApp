@@ -4,7 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import RadioInput from '../../common/form/RadioInput';
 import TextInput from '../../common/form/TextInput';
 import TextArea from '../../common/form/TextArea';
-// import PlaceInput from '../../common/form/PlaceInput';
 import SelectInput from '../../common/form/SelectInput';
 
 const interests = [
@@ -58,13 +57,6 @@ const About = ({ pristine, submitting, handleSubmit, updateProfile }) => {
           component={TextInput}
           placeholder="Occupation"
         />
-        {/* <Field
-          width={8}
-          name="origin"
-          options={{ types: ['(regions)'] }}
-          component={PlaceInput}
-          placeholder="Country of Origin"
-        /> */}
         <Divider />
         <Button disabled={pristine || submitting} size="large" positive content="Update Profile" />
       </Form>
