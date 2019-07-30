@@ -9,7 +9,7 @@ const UserInfo = ({profile, photos}) => {
                      <Segment>
                          <Grid columns={2}>
                              <Grid.Column width={10}>
-                                 <Header icon='smile' content={`About ${profile.displayName}`}/>
+                                 <Header content={`About ${profile.displayName}`}/>
                                  <p>I am a: <strong>{profile.occupation}</strong></p>
                                  <p>Originally from <strong>{profile.city}</strong></p>
                                  <p>Member Since: <strong>28th March 2018</strong></p>

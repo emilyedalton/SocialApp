@@ -1,11 +1,8 @@
 import React, { Fragment } from 'react';
 import { Header, Menu, Tab } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import Welcome from '../PhotosPage';
 import PhotosPage from '../PhotosPage';
 import AccountPage from '../AccountPage';
-import UserInfo from '../UserDetails/UserInfo';
-import BasicPage from '../BasicPage';
 import UserDashboard from '../UserDetails/UserDashboard';
 
 

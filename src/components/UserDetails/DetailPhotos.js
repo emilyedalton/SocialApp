@@ -5,9 +5,12 @@ import {Button, Card, Header, Grid, Image, Segment} from 'semantic-ui-react'
 const DetailPhotos = ({photos}) =>{
 
     return(
-        
+
 <Grid>
+
     <Grid.Column width={12}>
+    <Header content="Author Photo(s)"/>    
+
         <Image.Group size="small">
            
             {photos && photos.map(photo => 

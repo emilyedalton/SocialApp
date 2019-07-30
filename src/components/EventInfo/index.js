@@ -1,7 +1,7 @@
 import React,{Fragment}from 'react'
 import { Segment, Icon, Grid, Button, Header} from 'semantic-ui-react'
 
-const EventInfo =({event}) =>  {
+const EventInfo =({event, profile}) =>  {
 
     return(
    <Segment.Group>
@@ -129,31 +129,10 @@ const EventInfo =({event}) =>  {
 
       </Grid.Column>
         </Grid>
-      </Segment>
-      <Segment attached>
-        <Grid verticalAlign="middle">
-          <Grid.Column width={1}>
-            <Icon name="calendar" size="large" color="teal" />
-          </Grid.Column>
-          <Grid.Column width={15}>
-            <span>{event.date}</span>
-          </Grid.Column>
-        </Grid>
-      </Segment>
-      <Segment attached>
-        <Grid verticalAlign="middle">
-          <Grid.Column width={1}>
-            <Icon name="marker" size="large" color="teal" />
-          </Grid.Column>
-          <Grid.Column width={11}>
-            <span>{event.venue}</span>
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Button color="teal" size="tiny" content="Show Map" />
-          </Grid.Column>
-        </Grid>
-      </Segment>
-    </Segment.Group>
+        </Segment>
+        </Segment.Group>
+     
+  
     )
 }
 

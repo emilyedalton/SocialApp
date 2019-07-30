@@ -11,7 +11,7 @@ import {objectToArray} from '../../common/util/helpers'
 import {attend} from '../User/userActions'
 const mapState =(state, ownProps) => {
     const eventID = ownProps.match.params.id;
-
+    
     let event ={};
 
     if (state.firestore.ordered.events && state.firestore.ordered.events.length >0){
@@ -20,7 +20,9 @@ const mapState =(state, ownProps) => {
     }
     return{
         event,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
+
     }
 }
 
@@ -40,7 +42,7 @@ class EventDetailedPage extends Component{
           }
 
 render(){
-    const {event, auth, attend} = this.props;
+    const {event, auth, attend, profile} = this.props;
     const attendees = event && event.attendees && objectToArray(event.attendees)
     const isHost = event.hostUid === auth.uid; 
     const isGoing = attendees &&  attendees.some(a => a.id === auth.uid)
@@ -49,7 +51,7 @@ render(){
         <Grid>
         
         <Grid.Column width ={10}>
-        <DetailHeader event ={event} attend={attend}/>
+        <DetailHeader event ={event} attend={attend} profile={profile}/>
         <EventInfo event ={event}/>
         <Comments/>
         

@@ -11,10 +11,7 @@ const UserHeader = ({profile, photos}) => {
                                 <Item.Image avatar size='small' src={profile.photoURL}/>
                                 <Item.Content verticalAlign='bottom'>
                                     <Header as='h1'>{profile.displayName}</Header>
-                                    <br/>
-                                    <Header as='h3'>{profile.occupation}</Header>
-                                    <br/>
-                                    <Header as='h3'>27, Lives in {profile.city}</Header>
+                                  
                                 </Item.Content>
                             </Item>
                         </Item.Group>

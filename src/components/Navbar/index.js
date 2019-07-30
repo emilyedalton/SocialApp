@@ -7,7 +7,6 @@ import SignOut from '../SignOut/'
 import {NavLink, Link, withRouter} from 'react-router-dom'
 import './style.css'
 import {openModal} from "../../modals/ModalActions"
-// import {logout} from '../../common/auth/authActions'
 
 const actions ={ 
     openModal, 

@@ -24,7 +24,10 @@ const mapState = (state)=>({
 const SettingsDashboard =({updatePassword, user, updateProfile}) => {
     return(
         <Grid>
-        <Grid.Column width ={12}>
+            
+        <Grid.Column width ={16}>
+        <SettingsNav/>
+
         <Switch>
         <Route path='/settings/basic' render={()=><BasicPage initialValues={user} updateProfile={updateProfile}/>} /> 
         <Route path='/settings/admin' render={()=><AdminPage initialValues={user} updateProfile={updateProfile}/>} />       
@@ -42,10 +45,7 @@ const SettingsDashboard =({updatePassword, user, updateProfile}) => {
 </Switch>
 
 
-<Grid.Column width={4}>
-<SettingsNav/>
 </Grid.Column>
-        </Grid.Column>
 
          </Grid>
     )

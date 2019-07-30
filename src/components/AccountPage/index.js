@@ -21,7 +21,7 @@ const AccountPage = ({ error, invalid, submitting, handleSubmit, updatePassword 
     <Segment>
       <Header dividing size="large" content="Account" />
       <div>
-        <Header color="teal" sub content="Change password" />
+        <Header style={{color: "#4E2A84"}} sub content="Change password" />
         <p>Use this form to update your account settings</p>
         <Form>
         {/* // onSubmit={handleSubmit(updatePassword)}> */}

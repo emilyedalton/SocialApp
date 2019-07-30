@@ -23,10 +23,10 @@ const Attendees = ({attendees}) => {
         attached='top'
         secondary
         inverted
-        color='teal'
+        color="#4E2A84"
       >
         {attendees && attendees.length}{' '}
-        {attendees && attendees.length === 1 ? 'Person' : 'People'} Going
+        {attendees && attendees.length === 1 ? 'Person' : 'People'} Following
       </Segment>
       <Segment attached>
         <Item.Group divided>

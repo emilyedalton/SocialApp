@@ -86,18 +86,18 @@ const handleSetMainPhoto = async (photo) => {
                 <Grid>
                     <Grid.Row />
                     <Grid.Column width={4}>
-                        <Header color='teal' sub content='Step 1 - Add Photo'/>
+                        <Header  sub content='Step 1 - Add Photo'/>
                         <DropZoneInput setFiles={setFiles}/>
                     </Grid.Column>
                     <Grid.Column width={1} />
                     <Grid.Column width={4}>
-                        <Header sub color='teal' content='Step 2 - Resize image' />
+                        <Header sub content='Step 2 - Resize image' />
                         {files.length > 0 &&
                         <CropperInput setImage={setImage}  imagePreview={files[0].preview}/>}
                     </Grid.Column>
                     <Grid.Column width={1} />
                     <Grid.Column width={4}>
-                        <Header sub color='teal' content='Step 3 - Preview + Upload' />
+                        <Header sub content='Step 3 - Preview + Upload' />
                         {files.length > 0 && (
                         <Fragment>
                         <div

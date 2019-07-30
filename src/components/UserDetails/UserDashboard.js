@@ -33,7 +33,6 @@ const UserDashboard  = ({profile, photos, auth}) =>{
 return(
 <div>
 <UserHeader profile={profile} photos={photos}/>
-<UserInfo profile={profile} photos={photos}/>
 <DetailPhotos profile={profile} photos={photos} auth={auth} />
 </div>
 )
