@@ -50,19 +50,19 @@ await firestore.remove(`events/${event.id}`)
 }
 };
 
-export const fetchEvent = (events) => {
-    return {
+export const fetchEvents = event => ({
+  
         type: FETCH_EVENT,
-        payload: events
-    }
-}
+        payload: {event}
+    
+})
 
 export const loadEvent = () => {
     return async dispatch => {
         try {
             dispatch(asyncActionStart())
-            let events = await fetchSampleData();
-            dispatch(fetchEvent(events))
+            let event = await fetchSampleData();
+            dispatch(fetchEvents(event))
             dispatch(asyncActionFinish())
         } catch (error) {
             console.log(error);

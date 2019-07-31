@@ -3,13 +3,13 @@ import { Header, Menu, Tab } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import PhotosPage from '../PhotosPage';
 import AccountPage from '../AccountPage';
-import UserDashboard from '../UserDetails/UserDashboard';
+import UserHeader from '../UserDetails/userHeader';
 
 
 
 const panes = [
   { menuItem: 'Photos', render: () => <PhotosPage/> },
-  { menuItem: 'Info', render: () => <UserDashboard/> },
+  { menuItem: 'Info', render: () => <UserHeader/> },
   { menuItem: 'Account', render: () => <AccountPage/> },
 ]
 

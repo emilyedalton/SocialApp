@@ -9,6 +9,8 @@ import {withFirestore} from 'react-redux-firebase'
 import toastr from 'react-redux-toastr'
 import {objectToArray} from '../../common/util/helpers'
 import {attend} from '../User/userActions'
+import ToPrint from '../ToPrint/'
+
 const mapState =(state, ownProps) => {
     const eventID = ownProps.match.params.id;
     
@@ -44,8 +46,8 @@ class EventDetailedPage extends Component{
 render(){
     const {event, auth, attend, profile} = this.props;
     const attendees = event && event.attendees && objectToArray(event.attendees)
-    const isHost = event.hostUid === auth.uid; 
-    const isGoing = attendees &&  attendees.some(a => a.id === auth.uid)
+    // const isHost = event.hostUid === auth.uid; 
+    // const isGoing = attendees &&  attendees.some(a => a.id === auth.uid)
 
     return(
         <Grid>
