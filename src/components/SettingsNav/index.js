@@ -36,13 +36,12 @@ class SettingsNav extends Component{
 
 [
 {
-  menuItem: { as: NavLink, content: "About", to: `/profile/${auth.uid}`
+  menuItem: { as: NavLink, content: "My Titles", to: `/profile/${auth.uid}`
 },
   render: () => (
     <Route path="/">
-      <Tab.Pane >
-        {/* <div>Authentication content here</div> */}
-      </Tab.Pane>
+      <Tab.Pane/> 
+   
     </Route>
   )
 },
@@ -50,19 +49,17 @@ class SettingsNav extends Component{
   menuItem: { as: NavLink, content: "Photos", to: "/settings/photos", exact: true },
   render: () => (
     <Route path="/" exact>
-      <Tab.Pane>
-        {/* <div>Home</div> */}
-      </Tab.Pane>
+      <Tab.Pane/>
+     
     </Route>
   )
 },
 {
-  menuItem: { as: NavLink, content: "Info", to: "/info" },
+  menuItem: { as: NavLink, content: "Settings", to: "/settings/account" },
   render: () => (
-    <Route path="/configs">
-      <Tab.Pane>
-        <div>Config Lists content here</div>
-      </Tab.Pane>
+    <Route path="/">
+      <Tab.Pane/>
+   
     </Route>
   )
 }

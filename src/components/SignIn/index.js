@@ -9,12 +9,12 @@ return (
        <Image avatar spaced="right" src={profile.photoURL || "/assets/user.png"}/>
          <Dropdown pointing="top left" text={profile.displayName}>
            <Dropdown.Menu>
-             <Dropdown.Item text="Create Title" icon="plus" />
+             <Dropdown.Item text="Create Title" as ={Link} to={"/createEvent"}icon="plus" />
              <Dropdown.Item text="My Titles" as={Link} to={`profile/${auth.uid}`} icon="book" />
-             <Dropdown.Item text="My Network" icon="users" />
-             <Dropdown.Item as={Link} to={`profile/${auth.uid}`}text="My Profile" icon="user" />
-             <Dropdown.Item text="Settings" as={Link} to={`/settings`} icon="settings" />
-             {/* <Dropdown.Item text="Photos" as={Link} to={`/settings/photos`} icon="camera" /> */}
+             <Dropdown.Item text="Photos" as={Link} to={`/settings/photos`} icon="camera" />
+             {/* <Dropdown.Item text="My Network" icon="users" /> */}
+             {/* <Dropdown.Item as={Link} to={`profile/${auth.uid}`}text="My Profile" icon="user" /> */}
+             <Dropdown.Item text="Settings" as={Link} to={`/settings/account`} icon="settings" />
 
              <Dropdown.Item onClick={signOut} text="Sign Out" icon="power" />
            </Dropdown.Menu>

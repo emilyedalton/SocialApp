@@ -19,8 +19,10 @@ const UserTitles= ({profile, photos, auth, titles, isCurrentUser}) => {
               <Card as={Link} to={`/event/${title.id}`} key={title.id}>
                 <Card.Content>
                   <Card.Header textAlign='center'>{title.titleofBook}</Card.Header>
-                  
-                </Card.Content>
+ </Card.Content>
+ 
+ <Icon fitted name="book" color ="black" size="huge" textAlign='center' verticalAlign="middle"/>  
+ <Card.Content> {title.choices} </Card.Content>           
               </Card>
             ))}
         </Card.Group>
