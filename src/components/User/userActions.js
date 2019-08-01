@@ -168,23 +168,23 @@ export const getAuthorTitles = (userUid, activeTab) => async (
     switch (activeTab)
      {
       case 1: // past events
-        query = eventsRef
-          .where('userUid', '==', userUid)
-        //   .where('eventDate', '<=', today)
-          .orderBy('eventDate', 'desc');
+      query = eventsRef
+      .where('userUid', '==', userUid)
+      .where('host', '==', true)
+      .where('going', '==' , true)
         break;
-      case 2: // future events
-        query = eventsRef
-          .where('userUid', '==', userUid)
-        //   .where('eventDate', '>=', today)
-          .orderBy('eventDate');
-        break;
-      case 3: // hosted events
-        query = eventsRef
-          .where('userUid', '==', userUid)
-          .where('host', '==', true)
-        //   .orderBy('eventDate', 'desc');
-        break;
+    //   case 2: // future events
+    //     query = eventsRef
+    //       .where('userUid', '==', userUid)
+    //     //   .where('eventDate', '>=', today)
+    //       .orderBy('eventDate');
+    //     break;
+    //   case 3: // hosted events
+    //     query = eventsRef
+    //       .where('userUid', '==', userUid)
+    //       .where('host', '==', true)
+    //     //   .orderBy('eventDate', 'desc');
+    //     break;
       default:
         query = eventsRef
           .where('userUid', '==', userUid)
@@ -202,7 +202,7 @@ export const getAuthorTitles = (userUid, activeTab) => async (
           .doc(querySnap.docs[i].data().eventId)
           .get();
         event.push({ ...evt.data(), id: evt.id });
-        console.log(event)
+          console.log(event)
 
       }
       dispatch({ type: FETCH_EVENT, payload: {event} });

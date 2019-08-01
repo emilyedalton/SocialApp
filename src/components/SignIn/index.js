@@ -10,7 +10,7 @@ return (
          <Dropdown pointing="top left" text={profile.displayName}>
            <Dropdown.Menu>
              <Dropdown.Item text="Create Title" icon="plus" />
-             <Dropdown.Item text="My Titles" icon="book" />
+             <Dropdown.Item text="My Titles" as={Link} to={`profile/${auth.uid}`} icon="book" />
              <Dropdown.Item text="My Network" icon="users" />
              <Dropdown.Item as={Link} to={`profile/${auth.uid}`}text="My Profile" icon="user" />
              <Dropdown.Item text="Settings" as={Link} to={`/settings`} icon="settings" />

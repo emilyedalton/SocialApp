@@ -3,11 +3,12 @@ import { compose} from 'redux'
 import {connect}from 'react-redux'
 import UserHeader from './userHeader'
 import UserInfo from './UserInfo'
-import UserTitles from './UserTitles'
+import UserTitles from '../UserTitles'
 import DetailPhotos from './DetailPhotos'
 import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import {getAuthorTitles} from '../User/userActions'
 import UserQuery from './userQuery'
+import SettingsNav from '../SettingsNav'
 
 
 
@@ -65,10 +66,13 @@ render(){
 
 return(
 <div>
-<UserHeader profile={profile} photos={photos} events={events} isCurrentUser={isCurrentUser}/>
-<DetailPhotos profile={profile} photos={photos} auth={auth}
+ <SettingsNav profile={profile} photos={photos} auth={auth}
 titles={events}
 isCurrentUser={isCurrentUser}/>
+{/* <UserHeader profile={profile} photos={photos} events={events} isCurrentUser={isCurrentUser}/>
+<DetailPhotos profile={profile} photos={photos} auth={auth}
+titles={events}
+isCurrentUser={isCurrentUser}/> */}
 <UserTitles profile={profile} photos={photos} auth={auth}
 titles={events}
 isCurrentUser={isCurrentUser}/>
