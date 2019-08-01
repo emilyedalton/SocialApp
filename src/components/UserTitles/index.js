@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header, Item, Grid, Card,Icon, List } from 'semantic-ui-react';
+import { Segment, Header, Item, Grid, Card,Icon, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -17,12 +17,13 @@ const UserTitles= ({profile, photos, auth, titles, isCurrentUser}) => {
           {titles &&
             titles.map(title => (
               <Card as={Link} to={`/event/${title.id}`} key={title.id}>
-                <Card.Content>
-                  <Card.Header textAlign='center'>{title.titleofBook}</Card.Header>
+                <Card.Content >
+                  <Card.Header>{title.titleofBook}</Card.Header>
  </Card.Content>
  
  <Icon fitted name="book" color ="black" size="huge" textAlign='center' verticalAlign="middle"/>  
- <Card.Content> {title.choices} </Card.Content>           
+ <Card.Content extra> <Label textAlign='center'as='p' color='black' image>
+                {title.choices}</Label> </Card.Content>           
               </Card>
             ))}
         </Card.Group>
