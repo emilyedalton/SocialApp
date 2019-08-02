@@ -15,6 +15,7 @@ import ModalManager from './modals/ModalManager'
 import UserDashboard from './components/UserDetails/UserDashboard';
 import {withFirebase} from 'react-redux-firebase'
 import UserTitles from './components/UserTitles';
+import User from './components/User';
 
 const mapState = (state)=>({
   auth:state.firebase.auth, 
@@ -44,8 +45,10 @@ class App extends Component {
       <Route path ='/test' component={Test}/>
       <Route path ='/event/:id' component={EventDetailedPage}/>
       <Route path ='/manage/:id' component={EventForm}/>
+      <Route path  ='/user/:id' component={User}/>
       <Route path ='/people' component={PeopleDashboard}/>
-      <Route path ='/profile/:id' component={UserDashboard}/>
+      <Route path ='/mytitles/:id' component={UserDashboard}/>
+
       {/* <Route path ='settings/mytitles/:id' component={UserDashboard}/> */}
 
 

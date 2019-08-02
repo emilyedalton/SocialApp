@@ -10,7 +10,7 @@ return (
          <Dropdown pointing="top left" text={profile.displayName}>
            <Dropdown.Menu>
              <Dropdown.Item text="Create Title" as ={Link} to={"/createEvent"}icon="plus" />
-             <Dropdown.Item text="My Titles" as={Link} to={`profile/${auth.uid}`} icon="book" />
+             <Dropdown.Item text="My Titles" as={Link}  to={`/mytitles/${auth.uid}`} icon="book" />
              <Dropdown.Item text="Photos" as={Link} to={`/settings/photos`} icon="camera" />
              {/* <Dropdown.Item text="My Network" icon="users" /> */}
              {/* <Dropdown.Item as={Link} to={`profile/${auth.uid}`}text="My Profile" icon="user" /> */}

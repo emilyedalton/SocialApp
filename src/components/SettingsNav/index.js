@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Menu, Tab } from 'semantic-ui-react';
-import { Route, NavLink, Router } from 'react-router-dom';
+import { Route, NavLink, Router, Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
@@ -36,7 +36,7 @@ class SettingsNav extends Component{
 
 [
 {
-  menuItem: { as: NavLink, content: "My Titles", to: `/profile/${auth.uid}`
+  menuItem: { as: NavLink, content: "My Titles", to: `/mytitles/${auth.uid}`, exact: true
 },
   render: () => (
     <Route path="/">
@@ -46,7 +46,7 @@ class SettingsNav extends Component{
   )
 },
 {
-  menuItem: { as: NavLink, content: "Photos", to: "/settings/photos", exact: true },
+  menuItem: { as: Link, content: "Photos", to: "/settings/photos", exact: true },
   render: () => (
     <Route path="/" exact>
       <Tab.Pane/>

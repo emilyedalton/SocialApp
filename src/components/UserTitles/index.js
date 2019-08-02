@@ -11,7 +11,7 @@ const UserTitles= ({profile, photos, auth, titles, isCurrentUser}) => {
                      <Segment>
                          <Grid columns={2}>
                              <Grid.Column width={12}>
-                                 <Header content={`About ${profile.displayName}`}/>
+                                 <Header content={`${profile.displayName}'s Titles`}/>
 
                                  <Card.Group itemsPerRow={5}>
           {titles &&
@@ -32,10 +32,7 @@ const UserTitles= ({profile, photos, auth, titles, isCurrentUser}) => {
 
               <Grid.Column width={6}>
             
-                <p>No interests</p>
               
-               
-
 </Grid.Column>
         </Grid>
       </Segment>

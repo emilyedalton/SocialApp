@@ -41,10 +41,16 @@ class Navbar extends Component {
                 background: "#4E2A84",
 
              }}>
+             
                <Container>
                  <Menu.Item header>
                  </Menu.Item>
-                 <Menu.Item  as={NavLink} to='/' name="Home"/>
+                 {authenticated &&
+                 <Menu.Item
+                  as={NavLink} 
+                  to={`/user/${auth.uid}`}
+                  name="My Profile"/>}
+                 <Menu.Item  as={NavLink} exact to='/' name="Home"/>
                  {authenticated && isAdmin==="yes"&&(
                      <Fragment>
 
@@ -55,8 +61,10 @@ class Navbar extends Component {
 
                  <Menu.Item
                   as={NavLink} 
-                  to='/titles' 
+                  exact to='/titles' 
                   name="Titles"/>
+
+                 
                  </Fragment>
                  
                      )}
@@ -65,7 +73,7 @@ class Navbar extends Component {
                  {authenticated &&
                    <Button 
                    as={Link} 
-                   to='/createEvent' 
+                   exact to='/createEvent' 
                    floated="right"  
                    inverted content="Create" />
                  }
