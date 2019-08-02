@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {Button, Card, Header, Image, Segment} from 'semantic-ui-react'
+import {Button, Card, Header, Image, Segment, Label} from 'semantic-ui-react'
 
 
 const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto}) =>{
@@ -18,7 +18,7 @@ const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto}) =>{
         <Card.Group itemsPerRow={5}>
             <Card>
                 <Image src={profile.photoURL || '/assets/user.png'}/>
-                <Button positive>Main Photo</Button>
+                <Label color="black">Display Photo</Label>
             </Card>
             {photos && filteredPhotos.map(photo => (
 
@@ -27,8 +27,8 @@ const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto}) =>{
                         src={photo.url}
                     />
                     <div className='ui two buttons'>
-                        <Button onClick={()=> setMainPhoto(photo)} basic color='green'>Main</Button>
-                        <Button onClick={() => deletePhoto(photo)} basic icon='trash' color='red' />
+                        <Button onClick={()=> setMainPhoto(photo)} basic color='black'>Main</Button>
+                        <Button onClick={() => deletePhoto(photo)} basic icon='trash' color='black' />
                     </div>
                 </Card>
 
