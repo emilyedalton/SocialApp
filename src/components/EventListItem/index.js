@@ -19,29 +19,17 @@ class EventListItem extends Component {
                       <Item.Content>
                         <Item.Header as="a">{event.titleofBook}</Item.Header>
                         <Item.Description>
-                         <h4>by {event.fullAuthor}</h4> 
+                         <h4>by {event.lastName}, {event.firstName}</h4> 
                          <p>{event.description}</p> 
                         </Item.Description>
                       </Item.Content>
                     </Item>
                   </Item.Group>
                 </Segment>
-                {/* <Segment>
-                </Segment> */}
-                {/* <Segment secondary>
-                <List horizontal>
-            {event.attendees &&   Object.values(event.attendees).map((attendee, index) => (
-                <EventAttendee key={index} attendee={attendee} />
-
-))}
-                  
-                
-                  </List>
-                </Segment> */}
                 <Segment clearing>
 <span>{event.Description}</span>                  
-<Button as={Link} to ={`/event/${event.id}`}color="gray" floated="right" content="View" />
-<Button as={Link} to ={`/event/${event.id}`} color = "gray" floted="right" content = "Follow this Title"/>
+<Button as={Link} to ={`/event/${event.id}`}floated="right" content="View" />
+<Button as={Link} to ={`/event/${event.id}`}  floted="right" content = "Follow this Title"/>
                 </Segment>
               </Segment.Group>   
 

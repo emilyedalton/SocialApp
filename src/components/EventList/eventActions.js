@@ -120,11 +120,8 @@ try {
     .get()
     let query;
 
-    // lastEvent ? 
     query = eventsRef
-    // .where('lastName', "==", "Brad")
-    // .startAfter(startAfter).limit(3)
-    // : query = eventsRef
+ 
     .orderBy("lastName")
     .limit(3)
     let event = []

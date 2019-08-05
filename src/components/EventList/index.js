@@ -8,7 +8,6 @@ class EventList extends Component {
         const {events, onEventOpen, deleteEvent, getEventsForDashboard} = this.props;
     return(
 <div>
-<h1>Title List</h1> 
 {events&&events.map((event)=>(
 <EventListItem
 key={event.id} 

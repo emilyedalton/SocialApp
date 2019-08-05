@@ -79,7 +79,7 @@ class EventDashboard extends Component {
     
 <Grid>
 <Grid.Column width ={10}>
-<Button onClick={this.getNextEvents} content= "Sort by Author Last Name"/>
+<h1>Title List</h1> <Button onClick={this.getNextEvents} content= "Sort by Author Last Name"/>
 <EventList
 events={events}
 deleteEvent ={this.handleDeleteEvent}
