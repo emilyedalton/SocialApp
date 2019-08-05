@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import EventListItem from '../EventListItem'
-
+import {Button} from 'semantic-ui-react'
 
 class EventList extends Component {
 
     render () {
-        const {events, onEventOpen, deleteEvent} = this.props;
+        const {events, onEventOpen, deleteEvent, getEventsForDashboard} = this.props;
     return(
 <div>
-<h1>Title List</h1>
+<h1>Title List</h1> 
 {events&&events.map((event)=>(
 <EventListItem
 key={event.id} 

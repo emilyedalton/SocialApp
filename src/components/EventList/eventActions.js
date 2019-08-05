@@ -2,6 +2,7 @@ import {CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT, FETCH_EVENT} from './eventCons
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../Async/asyncActions';
 import {fetchSampleData} from "../../data/mockapi"
 import {toastr} from 'react-redux-toastr'
+import firebase from '../../config/firebase'
 import {createNewEvent} from '../../common/util/helpers'
 
 export const createEvent = (event) => {
@@ -70,3 +71,79 @@ export const loadEvent = () => {
         }
     }
 }
+export const getAllEvents = () => 
+async (dispatch, getState) => {
+    const firestore = firebase.firestore();
+    const eventsRef = firestore.collection('events')
+    try {
+        dispatch(asyncActionStart())
+        let startAfter =  await firestore.collection('events')
+        .get()
+        let query;
+    
+        query = eventsRef
+        .orderBy("created",  "desc")
+        let event = []
+    
+        let querySnap = await query.get()
+    
+        if (querySnap.docs.length === 0){
+            dispatch(asyncActionFinish())
+            return querySnap;
+        }
+    
+        for (let i=0; i < querySnap.docs.length; i++){
+            let evt = {...querySnap.docs[i].data(), id: querySnap.docs[i].id}
+            event.push(evt)
+        }
+        dispatch({type: FETCH_EVENT, payload: {event}})
+        dispatch(asyncActionFinish())
+        return event;
+    } catch(error){
+        console.log(error)
+        dispatch(asyncActionError())
+    }}
+
+
+export const getEventsForDashboard = (lastEvent) =>
+async (dispatch, getState) => {
+    // let today = new Date(Date.now());
+    const firestore = firebase.firestore();
+    const eventsRef = firestore.collection('events')
+    // .where('created', '<=', today)
+    // console.log(eventsQuery)
+
+try {
+    dispatch(asyncActionStart())
+    let startAfter = lastEvent && await firestore.collection('events')
+    .doc(lastEvent.id)
+    .get()
+    let query;
+
+    // lastEvent ? 
+    query = eventsRef
+    // .where('lastName', "==", "Brad")
+    // .startAfter(startAfter).limit(3)
+    // : query = eventsRef
+    .orderBy("lastName")
+    .limit(3)
+    let event = []
+
+    let querySnap = await query.get()
+
+    if (querySnap.docs.length === 0){
+        dispatch(asyncActionFinish())
+        return querySnap;
+    }
+
+    for (let i=0; i < querySnap.docs.length; i++){
+        let evt = {...querySnap.docs[i].data(), id: querySnap.docs[i].id}
+        event.push(evt)
+    }
+    dispatch({type: FETCH_EVENT, payload: {event}})
+    dispatch(asyncActionFinish())
+    return event;
+} catch(error){
+    console.log(error)
+    dispatch(asyncActionError())
+}}
