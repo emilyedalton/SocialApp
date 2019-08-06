@@ -7,7 +7,7 @@ import { deleteEvent, loadEvent } from '../EventList/eventActions'
 import LoadingComponent from '../Loader';
 import EventActivity from '../EventActivity';
 import { firestoreConnect } from 'react-redux-firebase';
-import {getEventsForDashboard, getAllEvents} from '../EventList/eventActions'
+import {sortByAuthor, getAllEvents, sortByTitle} from '../EventList/eventActions'
 
 const mapState =(state) => ({
     events: state.events,
@@ -18,8 +18,9 @@ const mapState =(state) => ({
 
 const actions = {
     deleteEvent,
-    getEventsForDashboard,
-    getAllEvents
+    sortByAuthor,
+    getAllEvents,
+    sortByTitle
 }
 class EventDashboard extends Component {
     state = {
@@ -39,10 +40,16 @@ class EventDashboard extends Component {
     //     // }
     //     console.log(events)
     // }
-    getEventsForDashboard = async()=>{
+    sortByAuthor = async()=>{
       
-        let next= await this.props.getEventsForDashboard()
+        let next= await this.props.sortByAuthor()
         console.log(next)
+    }
+
+    sortByTitle = async()=>{
+      
+        let sorted= await this.props.sortByTitle()
+        console.log(sorted)
     }
     // componentDidUpdate = prevProps => {
     //     if (this.props.events !== prevProps.events) {
@@ -52,18 +59,18 @@ class EventDashboard extends Component {
     //     }
     //   };
 
-    getNextEvents = async() =>{
-        const {events} = this.props;
-        // let lastEvent = events && events[events.length - 1]
-        // console.log(lastEvent)
-        let next = await this.props.getEventsForDashboard()
-        console.log(next)
-        if (next && next.docs && next.docs.length <= 1){
-            this.setState({
-                moreEvents: true
-            })
-        }
-    }
+    // sortByAuthor = async() =>{
+    //     const {events} = this.props;
+    //     // let lastEvent = events && events[events.length - 1]
+    //     // console.log(lastEvent)
+    //     let next = await this.props.sortByAuthor()
+    //     console.log(next)
+    //     if (next && next.docs && next.docs.length <= 1){
+    //         this.setState({
+    //             moreEvents: true
+    //         })
+    //     }
+    // }
    
 
     handleDeleteEvent = (eventID)=>() => {
@@ -78,8 +85,12 @@ class EventDashboard extends Component {
     return(
     
 <Grid>
+<h1>Title List</h1>
+ <Button onClick={this.sortByAuthor} content= "Sort by Author Last Name"/>
+ <Button onClick={this.sortByTitle} content= "Sort by Title"/>
+
 <Grid.Column width ={10}>
-<h1>Title List</h1> <Button onClick={this.getNextEvents} content= "Sort by Author Last Name"/>
+
 <EventList
 events={events}
 deleteEvent ={this.handleDeleteEvent}

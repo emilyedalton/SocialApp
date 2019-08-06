@@ -105,13 +105,10 @@ async (dispatch, getState) => {
     }}
 
 
-export const getEventsForDashboard = (lastEvent) =>
+export const sortByAuthor = (lastEvent) =>
 async (dispatch, getState) => {
-    // let today = new Date(Date.now());
     const firestore = firebase.firestore();
     const eventsRef = firestore.collection('events')
-    // .where('created', '<=', today)
-    // console.log(eventsQuery)
 
 try {
     dispatch(asyncActionStart())
@@ -123,7 +120,42 @@ try {
     query = eventsRef
  
     .orderBy("lastName")
-    .limit(3)
+    let event = []
+
+    let querySnap = await query.get()
+
+    if (querySnap.docs.length === 0){
+        dispatch(asyncActionFinish())
+        return querySnap;
+    }
+
+    for (let i=0; i < querySnap.docs.length; i++){
+        let evt = {...querySnap.docs[i].data(), id: querySnap.docs[i].id}
+        event.push(evt)
+    }
+    dispatch({type: FETCH_EVENT, payload: {event}})
+    dispatch(asyncActionFinish())
+    return event;
+} catch(error){
+    console.log(error)
+    dispatch(asyncActionError())
+}}
+
+export const sortByTitle = (lastEvent) =>
+async (dispatch, getState) => {
+    const firestore = firebase.firestore();
+    const eventsRef = firestore.collection('events')
+
+try {
+    dispatch(asyncActionStart())
+    let startAfter = lastEvent && await firestore.collection('events')
+    .doc(lastEvent.id)
+    .get()
+    let query;
+
+    query = eventsRef
+ 
+    .orderBy("titleofBook")
     let event = []
 
     let querySnap = await query.get()
