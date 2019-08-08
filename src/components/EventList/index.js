@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import EventListItem from '../EventListItem'
 import {Button} from 'semantic-ui-react'
+import LazyLoad, { lazyload } from 'react-lazyload'
 
 class EventList extends Component {
 
@@ -9,13 +10,14 @@ class EventList extends Component {
     return(
 <div>
 {events&&events.map((event)=>(
+    <LazyLoad key={event.id}>
 <EventListItem
-key={event.id} 
+ 
 event ={event}
 onEventOpen ={onEventOpen}
 deleteEvent ={deleteEvent}
 />
-
+</LazyLoad>
 ))}
 
 </div>

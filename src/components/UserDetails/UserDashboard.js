@@ -9,6 +9,7 @@ import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import {getAuthorTitles} from '../User/userActions'
 import UserQuery from './userQuery'
 import SettingsNav from '../SettingsNav'
+import LoadingComponent from '../Loader';
 
 
 
@@ -60,9 +61,10 @@ class UserDashboard extends Component{
         console.log(events)
     }
 render(){
-    const {profile, photos, auth, match, events} =this.props;
+    const {profile, photos, auth, match, events, requesting} =this.props;
     const isCurrentUser = auth.uid === match.params.id;
-    
+    // const loading = Object.values(requesting).some(a => a ===true)
+    // if (loading) return <LoadingComponent/>
 
 return(
 <div>
