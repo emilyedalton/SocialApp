@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import DetailHeader from '../DetailHeader'
 import EventInfo from '../EventInfo'
 import Attendees from '../Attendees'
-import Comments from '../Comments'
+// import Comments from '../Comments'
 import { Grid} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {withFirestore} from 'react-redux-firebase'
@@ -55,7 +55,6 @@ render(){
         <Grid.Column width ={10}>
         <DetailHeader event ={event} attend={attend} profile={profile}/>
         <EventInfo event ={event}/>
-        <Comments/>
         
         </Grid.Column>
         

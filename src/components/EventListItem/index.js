@@ -20,7 +20,7 @@ class EventListItem extends Component {
                         <Item.Header as="a">{event.titleofBook}</Item.Header>
                         <Item.Description>
                          <h4>by {event.lastName}, {event.firstName}</h4> 
-                         <p>{event.description}</p> 
+                         <p>{event.bookDesc}</p> 
                         </Item.Description>
                       </Item.Content>
                     </Item>

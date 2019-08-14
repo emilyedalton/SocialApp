@@ -31,10 +31,12 @@ const mapState = (state) => ({
     auth: state.firebase.auth,
     profile: state.firebase.profile,
     photos: state.firestore.ordered.photos, 
-    loading: state.async.loading
+    loading: state.async.loading,
+    eventsLoading: state.async.loading,
+
 })
 
-const PhotosPage =({uploadProfileImage, photos, profile, deletePhoto, setMainPhoto, loading}) => {
+const PhotosPage =({uploadProfileImage, photos, profile, deletePhoto, setMainPhoto, loading, eventsLoading}) => {
 
     const[files, setFiles]= useState([])
     const [image, setImage]=useState(null)
@@ -81,7 +83,7 @@ const handleSetMainPhoto = async (photo) => {
     }
 }
         return (
-            <Segment>
+            <Segment >
                 <Header dividing size='large' content='Your Photos' />
                 <Grid>
                     <Grid.Row />
@@ -117,7 +119,7 @@ const handleSetMainPhoto = async (photo) => {
                 </Grid>
                         
                 <Divider/>
-               <UserPhotos photos={photos} profile={profile} deletePhoto={handleDeletePhoto} setMainPhoto={handleSetMainPhoto} />
+               <UserPhotos eventsLoading={eventsLoading} photos={photos} profile={profile} deletePhoto={handleDeletePhoto} setMainPhoto={handleSetMainPhoto} />
             </Segment>
         );
     }

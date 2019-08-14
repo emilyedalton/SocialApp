@@ -86,10 +86,14 @@ class EventDashboard extends Component {
     
 <Grid>
 <h1>Title List</h1>
- <Button onClick={this.sortByAuthor} content= "Sort by Author Last Name"/>
- <Button onClick={this.sortByTitle} content= "Sort by Title"/>
+ <Button  onClick={this.sortByAuthor} content= "Sort by Author Last Name"/>
+ <Button  onClick={this.sortByTitle} content= "Sort by Title"/>
+ <Grid.Row/>
 
-<Grid.Column width ={10}>
+ <Grid.Column width = {2}/>
+
+<Grid.Column width ={12}>
+<Grid.Column width = {2}/>
 
 <EventList
 events={events}
@@ -98,10 +102,10 @@ getEventsForDashboard={this.getEventsForDashboard}
 />
 {/* <EventByAuthor
 next={next}/> */}
-</Grid.Column>
+{/* </Grid.Column>
 <Grid.Column width ={6}>
 <h2>Activity Feed</h2>
-<EventActivity/>
+<EventActivity/> */}
 
 </Grid.Column>
 

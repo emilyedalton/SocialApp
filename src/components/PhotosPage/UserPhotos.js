@@ -3,7 +3,7 @@ import {Button, Card, Header, Image, Segment, Label} from 'semantic-ui-react'
 import LazyLoad from 'react-lazyload'
 
 
-const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto}) =>{
+const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto, eventsLoading}) =>{
   let filteredPhotos;
   if (photos) {
       filteredPhotos=photos.filter(photo => {
@@ -13,7 +13,7 @@ const UserPhotos = ({photos, profile, deletePhoto, setMainPhoto}) =>{
   }
     return(
         <Fragment>
-        <Segment>
+        <Segment loading={eventsLoading}>
         <Header sub color='teal' content='All Photos'/>
 
         <Card.Group itemsPerRow={5}>
