@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import { Grid, Button} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import EventList from '../EventList'
-import EventByAuthor from '../../components/EventsByAuthor'
-import { deleteEvent, loadEvent } from '../EventList/eventActions'
+// import EventByAuthor from '../../components/EventsByAuthor'
+import { deleteEvent } from '../EventList/eventActions'
 import LoadingComponent from '../Loader';
 import EventActivity from '../EventActivity';
 import { firestoreConnect } from 'react-redux-firebase';

@@ -61,7 +61,7 @@ class UserDashboard extends Component{
         console.log(events)
     }
 render(){
-    const {profile, photos, auth, match, events, requesting} =this.props;
+    const {profile, photos, auth, match, events, requesting, eventsLoading} =this.props;
     const isCurrentUser = auth.uid === match.params.id;
     // const loading = Object.values(requesting).some(a => a ===true)
     // if (loading) return <LoadingComponent/>
@@ -77,7 +77,8 @@ titles={events}
 isCurrentUser={isCurrentUser}/> */}
 <UserTitles profile={profile} photos={photos} auth={auth}
 titles={events}
-isCurrentUser={isCurrentUser}/>
+isCurrentUser={isCurrentUser}
+eventsLoading={eventsLoading}/>
 </div>
 )
 

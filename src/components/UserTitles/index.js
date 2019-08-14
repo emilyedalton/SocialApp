@@ -3,12 +3,12 @@ import { Segment, Header, Item, Grid, Card,Icon, Label } from 'semantic-ui-react
 import { Link } from 'react-router-dom';
 
 
-const UserTitles= ({profile, photos, auth, titles, isCurrentUser}) => {
+const UserTitles= ({profile, photos, auth, titles, isCurrentUser, eventsLoading}) => {
     return (
     
 
 <Grid.Column width={12}>
-                     <Segment>
+                     <Segment loading={eventsLoading}>
                          <Grid columns={2}>
                              <Grid.Column width={12}>
                                  <Header content={`${profile.displayName}'s Titles`}/>
