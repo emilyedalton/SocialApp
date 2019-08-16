@@ -12,6 +12,8 @@ import {sortByAuthor, getAllEvents, sortByTitle} from '../EventList/eventActions
 const mapState =(state) => ({
     events: state.events,
     loading: state.async.loading,
+    auth:state.firebase.auth, 
+
     // loadedEvents: []
 
 })
@@ -80,7 +82,7 @@ class EventDashboard extends Component {
     
 
     render () {
-        const {events, loading, profile,} =this.props; 
+        const {events, loading, profile, auth} =this.props; 
         if (loading) return <LoadingComponent/>
     return(
     
@@ -96,6 +98,7 @@ class EventDashboard extends Component {
 <Grid.Column width = {2}/>
 
 <EventList
+auth ={auth}
 events={events}
 deleteEvent ={this.handleDeleteEvent}
 getEventsForDashboard={this.getEventsForDashboard}

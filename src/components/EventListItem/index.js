@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 class EventListItem extends Component {
     render () {
-        const {event, deleteEvent,} = this.props
+        const {auth,event, deleteEvent,} = this.props
     return(
              <Segment.Group>
                 <Segment>
@@ -19,7 +19,9 @@ class EventListItem extends Component {
                       <Item.Content>
                         <Item.Header as="a">{event.titleofBook}</Item.Header>
                         <Item.Description>
-                         <h4>by {event.lastName}, {event.firstName}</h4> 
+                        <Link to={`/user/${event.hostUid}`} style={{color: 'black'}}>
+
+                         <h4>by {event.lastName}, {event.firstName}</h4>  </Link>
                          <p>{event.bookDesc}</p> 
                         </Item.Description>
                       </Item.Content>

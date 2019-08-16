@@ -9,7 +9,7 @@ export const objectToArray=(object)=>{
 export const createNewEvent = (user, photoURL, event) => {
     return {
         ...event,
-        hostUid: user.displayName,
+        hostUid: user.uid,
         hostPhotoURL: photoURL || 'assets/user.png',
         created: new Date(),
         attendees: {
