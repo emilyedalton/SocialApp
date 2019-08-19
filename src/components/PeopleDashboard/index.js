@@ -1,92 +1,71 @@
-// import React, {Component} from 'react';
-// import {compose} from 'redux'
-// import {connect}from 'react-redux'
-// import UserHeader from '../UserDetails/userHeader'
-// // import UserInfo from '../UserDetails/UserInfo'
-// import UserTitles from '../UserTitles'
-// import DetailPhotos from '../UserDetails/DetailPhotos'
-// import { firestoreConnect, isEmpty } from 'react-redux-firebase';
-// import {getAuthorTitles} from '../User/userActions'
-// import UserQuery from '../UserDetails/userQuery'
-// import SettingsNav from '../SettingsNav'
+import React, {Component} from 'react';
+import {Grid,Card} from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase';
+import {sortByAuthor, getAllEvents} from '../EventList/eventActions'
+import PeopleList from '../PeopleList'
 
+const mapState =(state) => ({
+    events: state.events,
+    loading: state.async.loading,
+    auth:state.firebase.auth, 
 
+    // loadedEvents: []
 
-// const actions = {
-//     getAuthorTitles
-// }
-// const mapState = (state, ownProps) => {
-//     let userUid = null;
-//     let profile = {};
-  
-//     // if (ownProps.match.params.id === state.auth.uid) {
-//     //   profile = state.firebase.profile;
-//     // } 
-//     // console.log(profile)
+})
 
-//     // else 
-//     // {
-//     //   profile =
-//     //     !isEmpty(state.firestore.ordered.profile) &&
-//     //     state.firestore.ordered.profile[0];
-//     //     userUid = ownProps.match.params.id;
-//     // }
-//     return {
-//       profile,
-//       userUid,
-//       events: state.events,
-//       eventsLoading: state.async.loading,
-//       auth: state.firebase.auth,
-//       users: state.users,
-//       photos: state.firestore.ordered.photos,
-//       requesting: state.firestore.status.requesting
-
-//     };
-
-//   };
-
-// // const mapState = (state)=>({
-//     // userUid: state.user.uid,
-// //     auth: state.firebase.auth,
-// //     profile: state.firebase.profile,
-// //     photos: state.firestore.ordered.photos, 
+const actions = {
+    sortByAuthor, 
+    getAllEvents
     
+}
 
 
-// // })
-
-// class PeopleDashboard extends Component{
-//     async componentDidMount(){
-//         let events = await this.props.getAuthorTitles(this.props.userUid)
-//         console.log(events)
-//     }
-// render(){
-//     const {profile, photos, auth, users, events} =this.props;
-//     // const isCurrentUser = auth.uid === match.params.id;
-    
-
-// return(
-// <div>
-
-// <UserHeader users={users} photos={photos} events={events} />
-//  {/* <DetailPhotos profile={profile} photos={photos} auth={auth}
-// titles={events}
-// isCurrentUser={isCurrentUser}/>
-// <UserTitles profile={profile} photos={photos} auth={auth}
-// titles={events}
-// isCurrentUser={isCurrentUser}/> */}
-// </div>
-// )
-
-//     }
-
+// sortByAuthor = async()=>{
+      
+//     let next= await this.props.sortByAuthor()
+//     console.log(next)
 // }
 
-// export default connect(
-//     mapState,
-//     actions
-//   )(
-//     firestoreConnect((auth, userUid) => UserQuery(auth, userUid))(
-//       PeopleDashboard
-//     )
-//   );
+
+class PeopleDashboard extends Component{
+    async componentDidMount (){
+        let all= await this.props.getAllEvents()
+        console.log(all)}
+
+render(){
+    const {events, loading, profile, auth} =this.props; 
+     
+
+return(
+<div>
+<h1>People List</h1>
+
+
+  <Card.Group itemsPerRow={3} style={{border:'2px solid red'}}>
+<PeopleList
+auth ={auth}
+events={events}
+deleteEvent ={this.handleDeleteEvent}
+getEventsForDashboard={this.getEventsForDashboard}
+/>
+{/* <EventByAuthor
+next={next}/> */}
+{/* </Grid.Column>
+<Grid.Column width ={6}>
+<h2>Activity Feed</h2>
+<EventActivity/> */}
+</Card.Group>
+
+
+</div>
+)
+
+    }
+
+}
+
+export default connect(
+    mapState, 
+    actions
+)(firestoreConnect([{collection: 'events'}])(PeopleDashboard));
