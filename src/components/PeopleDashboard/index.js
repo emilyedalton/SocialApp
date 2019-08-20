@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase';
 import {sortByAuthor, getAllEvents} from '../EventList/eventActions'
 import PeopleList from '../PeopleList'
+import LoadingComponent from '../Loader'
 
 const mapState =(state) => ({
     events: state.events,
@@ -30,7 +31,7 @@ class PeopleDashboard extends Component{
 
 render(){
     const {events, loading, profile, auth} =this.props; 
-     
+    if (loading) return <LoadingComponent/>
 
 return(
 <div>

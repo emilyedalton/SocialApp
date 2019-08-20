@@ -413,7 +413,7 @@ class EventForm extends Component {
 
               <Button
                 disabled={invalid || submitting || pristine}
-                positive
+                primary
                 type="submit"
               >
                 Submit
