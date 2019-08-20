@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Grid,Card} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase';
 import {sortByAuthor, getAllEvents} from '../EventList/eventActions'
@@ -10,7 +10,6 @@ const mapState =(state) => ({
     loading: state.async.loading,
     auth:state.firebase.auth, 
 
-    // loadedEvents: []
 
 })
 
@@ -21,17 +20,13 @@ const actions = {
 }
 
 
-// sortByAuthor = async()=>{
-      
-//     let next= await this.props.sortByAuthor()
-//     console.log(next)
-// }
-
-
 class PeopleDashboard extends Component{
     async componentDidMount (){
         let all= await this.props.getAllEvents()
-        console.log(all)}
+        console.log(all)
+        let sorted= await this.props.sortByAuthor()
+    console.log(sorted)
+    }
 
 render(){
     const {events, loading, profile, auth} =this.props; 
@@ -39,24 +34,17 @@ render(){
 
 return(
 <div>
-<h1>People List</h1>
+<h1>Authors</h1>
 
-
-  <Card.Group itemsPerRow={3} style={{border:'2px solid red'}}>
+ <Grid stackable columns={1}>
+<Grid.Row />
 <PeopleList
 auth ={auth}
 events={events}
 deleteEvent ={this.handleDeleteEvent}
 getEventsForDashboard={this.getEventsForDashboard}
 />
-{/* <EventByAuthor
-next={next}/> */}
-{/* </Grid.Column>
-<Grid.Column width ={6}>
-<h2>Activity Feed</h2>
-<EventActivity/> */}
-</Card.Group>
-
+</Grid>
 
 </div>
 )

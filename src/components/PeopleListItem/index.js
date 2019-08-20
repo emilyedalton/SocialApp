@@ -8,13 +8,13 @@ class PeopleListItem extends Component {
     render () {
         const {auth,event, deleteEvent,} = this.props
     return(
-        // <Card style={{border:'2px solid red'}}>
+        <Card>
           <Card.Content>
            <Link to={`/user/${event.hostUid}`} style={{color: 'black'}}>
 
-                         <h4>by {event.lastName}, {event.firstName}</h4>  </Link> 
+                         <h4>{event.lastName}, {event.firstName}</h4>  </Link> 
                          </Card.Content>
-    // </Card>
+     </Card>
     )
     
     }

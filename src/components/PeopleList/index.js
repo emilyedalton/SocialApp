@@ -9,21 +9,26 @@ class PeopleList extends Component {
         const {events, onEventOpen, auth} = this.props;
     return(
 <div>
+<Grid colums={3}>
+
 {events&&events.map((event)=>(
-    
-    <Card>
-        
-    <LazyLoad key={event.id}>
+
+
+<LazyLoad key={event.id}>
+<Grid.Column width={5}>
 
 <PeopleListItem
 auth={auth}
 event ={event}
 onEventOpen ={onEventOpen}
 />
+</Grid.Column>
+
 </LazyLoad>
-</Card>
 
 ))}
+  </Grid>
+
 
 </div>
             
