@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import EventDashboard from './components/EventDashboard'
 import EventForm from './components/EventForm'
 import PeopleDashboard from './components/PeopleDashboard'
-import UserDetails from './components/UserDetails/'
 import SettingsDashboard from './components/SettingsDashboard/'
 import Home from './components/Home/'
 import Welcome from './components/Welcome'
@@ -13,15 +12,10 @@ import {Container} from 'semantic-ui-react'
 import EventDetailedPage from './components/EventDetailedPage';
 import ModalManager from './modals/ModalManager'
 import UserDashboard from './components/UserDetails/UserDashboard';
-import {withFirebase} from 'react-redux-firebase'
-import UserTitles from './components/UserTitles';
 import User from './components/User';
 import {UserIsAuthenticated} from './common/auth/authWrapper'
 
-const mapState = (state)=>({
-  auth:state.firebase.auth, 
-  profile: state.firebase.profile
-})
+
 
 class App extends Component {
   render (){
@@ -50,7 +44,6 @@ class App extends Component {
       <Route path ='/people' component={UserIsAuthenticated(PeopleDashboard)}/>
       <Route path ='/mytitles/:id' component={UserIsAuthenticated(UserDashboard)}/>
 
-      {/* <Route path ='settings/mytitles/:id' component={UserDashboard}/> */}
 
 
       <Route path ='/events/:id' component={UserIsAuthenticated(EventDashboard)}/>

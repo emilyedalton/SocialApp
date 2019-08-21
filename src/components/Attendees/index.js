@@ -42,10 +42,10 @@ const Attendees = ({attendees}) => {
                     Host
                   </Label>
                 )}
-                <Item.Image size='tiny' src={attendee.photoURL} />
+                <Item.Image size='tiny' src={attendees.photoURL ||'/assets/user.png' } />
                 <Item.Content verticalAlign='middle'>
                   <Item.Header as='h3'>
-                    <Link to={`/profile/${attendee.id}`}>
+                    <Link to={`/user/${attendee.id}`}>
                       {attendee.displayName}
                     </Link>
                   </Item.Header>
