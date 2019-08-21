@@ -16,6 +16,7 @@ import UserDashboard from './components/UserDetails/UserDashboard';
 import {withFirebase} from 'react-redux-firebase'
 import UserTitles from './components/UserTitles';
 import User from './components/User';
+import {UserIsAuthenticated} from './common/auth/authWrapper'
 
 const mapState = (state)=>({
   auth:state.firebase.auth, 
@@ -41,21 +42,21 @@ class App extends Component {
     <Container className="main">
       <Switch>
       <Route path ='/welcome' component={Welcome}/>
-      <Route path ='/titles' component={EventDashboard}/>
+      <Route path ='/titles' component={UserIsAuthenticated(EventDashboard)}/>
       <Route path ='/test' component={Test}/>
-      <Route path ='/event/:id' component={EventDetailedPage}/>
-      <Route path ='/manage/:id' component={EventForm}/>
-      <Route path  ='/user/:id' component={User}/>
-      <Route path ='/people' component={PeopleDashboard}/>
-      <Route path ='/mytitles/:id' component={UserDashboard}/>
+      <Route path ='/event/:id' component={UserIsAuthenticated(EventDetailedPage)}/>
+      <Route path ='/manage/:id' component={UserIsAuthenticated(EventForm)}/>
+      <Route path  ='/user/:id' component={UserIsAuthenticated(User)}/>
+      <Route path ='/people' component={UserIsAuthenticated(PeopleDashboard)}/>
+      <Route path ='/mytitles/:id' component={UserIsAuthenticated(UserDashboard)}/>
 
       {/* <Route path ='settings/mytitles/:id' component={UserDashboard}/> */}
 
 
-      <Route path ='/events/:id' component={EventDashboard}/>
+      <Route path ='/events/:id' component={UserIsAuthenticated(EventDashboard)}/>
 
-      <Route path ='/settings' component={SettingsDashboard}/>
-      <Route path ='/createEvent' component={EventForm}/>
+      <Route path ='/settings' component={UserIsAuthenticated(SettingsDashboard)}/>
+      <Route path ='/createEvent' component={UserIsAuthenticated(EventForm)}/>
 
 
       </Switch>
