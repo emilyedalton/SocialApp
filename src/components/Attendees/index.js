@@ -1,13 +1,6 @@
 import React, {Fragment}from 'react'
-import { Segment, List, Item, Label} from 'semantic-ui-react'
+import { Item, Label, Segment, } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
-
-// import { Grid, Button} from 'semantic-ui-react'
-// import { connect } from 'react-redux'
-// import EventList from '../EventList'
-// import EventForm from '../EventForm';
-// import cuid from 'cuid'
-// import {createEvent, deleteEvent, updateEvent} from '../EventList/eventActions'
 
 
 const Attendees = ({attendees}) => {
@@ -42,7 +35,7 @@ const Attendees = ({attendees}) => {
                     Host
                   </Label>
                 )}
-                <Item.Image size='tiny' src={attendees.photoURL ||'/assets/user.png' } />
+                <Item.Image size='tiny' src={attendee.photoURL ||'/assets/user.png' } />
                 <Item.Content verticalAlign='middle'>
                   <Item.Header as='h3'>
                     <Link to={`/user/${attendee.id}`}>

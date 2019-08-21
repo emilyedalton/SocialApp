@@ -9,12 +9,11 @@ import TextInput from '../../common/form/TextInput.js'
 class BasicPage extends Component {
 
     render() {
-        const {pristine, submitting, handleSubmit, updateProfile} = this.props;
+        const {pristine, submitting } = this.props;
         return (
             <Segment>
                 <Header dividing size='large' content='Basics'/>
                 <Form>
-                {/* <Form onSubmit={handleSubmit(updateProfile)}> */}
                     <Field
                         width={8}
                         name='displayName'

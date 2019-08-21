@@ -37,9 +37,7 @@ const DetailHeader =({event, attend, profile})=> {
       </Segment>
 
       <Segment attached="bottom">
-        {/* <Button>Cancel My Place</Button> */}
         <Button onClick={()=> attend(event)} color="gray">Follow this Title</Button>
-        {/* {profile.admin==="yes"&&( */}
 
         <Button as={Link} to={`/manage/${event.id}`}color="gray" floated="right">
           Manage Title

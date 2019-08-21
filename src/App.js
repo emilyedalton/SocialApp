@@ -38,7 +38,7 @@ class App extends Component {
       <Route path ='/welcome' component={Welcome}/>
       <Route path ='/titles' component={UserIsAuthenticated(EventDashboard)}/>
       <Route path ='/test' component={Test}/>
-      <Route path ='/event/:id' component={UserIsAuthenticated(EventDetailedPage)}/>
+      <Route path ='/title/:id' component={UserIsAuthenticated(EventDetailedPage)}/>
       <Route path ='/manage/:id' component={UserIsAuthenticated(EventForm)}/>
       <Route path  ='/user/:id' component={UserIsAuthenticated(User)}/>
       <Route path ='/people' component={UserIsAuthenticated(PeopleDashboard)}/>
@@ -46,7 +46,7 @@ class App extends Component {
 
 
 
-      <Route path ='/events/:id' component={UserIsAuthenticated(EventDashboard)}/>
+      <Route path ='/titles/:id' component={UserIsAuthenticated(EventDashboard)}/>
 
       <Route path ='/settings' component={UserIsAuthenticated(SettingsDashboard)}/>
       <Route path ='/createEvent' component={UserIsAuthenticated(EventForm)}/>

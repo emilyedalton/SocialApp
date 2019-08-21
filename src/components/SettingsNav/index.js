@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Header, Menu, Tab } from 'semantic-ui-react';
-import { Route, NavLink, Router, Link } from 'react-router-dom';
+import {Tab } from 'semantic-ui-react';
+import { Route, NavLink, Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
-import PhotosPage from '../PhotosPage';
-import AccountPage from '../AccountPage';
-import UserHeader from '../UserDetails/userHeader';
-import UserDashboard from '../UserDetails/UserDashboard';
 
 const query = ({auth})=>{
   return [
@@ -79,4 +75,3 @@ export default compose(
   ),
   firestoreConnect(auth => query(auth))
 )(SettingsNav);
-// export default SettingsNav;

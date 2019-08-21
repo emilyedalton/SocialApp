@@ -78,20 +78,7 @@ class Navbar extends Component {
                    inverted content="Create" />
                  }
                  </Menu.Item>
-{/* This is basically how to protect routes, do not change yet
 
-if user is authenticated and isAdmin === "a" show this button. 
-
-I assigned this value to isAdmin below the render. Its from admin in firebase  */}
-{/* <Menu.Item>
-{authenticated && isAdmin ==="yes" &&
-  <Button 
-  as={NavLink} 
-  to='/people' 
-  floated="right"  
-  inverted content="People" />
-}
-</Menu.Item> */}
     {authenticated ?(<SignIn auth={auth}profile={profile} signOut={this.handleSignOut}/> 
                  ):(
                  <SignOut signIn={this.handleSignIn} register ={this.handleRegister}/> 
