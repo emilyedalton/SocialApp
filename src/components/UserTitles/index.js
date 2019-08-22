@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header, Item, Grid, Card,Icon, Label } from 'semantic-ui-react';
+import { Segment, Header, Grid, Card,Icon, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -21,8 +21,8 @@ const UserTitles= ({profile, photos, auth, titles, isCurrentUser, eventsLoading}
                   <Card.Header>{title.titleofBook}</Card.Header>
  </Card.Content>
  
- <Icon fitted name="book" color ="black" size="huge" textAlign='center' verticalAlign="middle"/>  
- <Card.Content extra> <Label textAlign='center'as='p' color='black' image>
+ <Icon fitted name="book" color ="black" size="huge"/>  
+ <Card.Content extra> <Label as='p' color='black' image>
                 {title.choices}</Label> </Card.Content>           
               </Card>
             ))}

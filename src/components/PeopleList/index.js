@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PeopleListItem from '../PeopleListItem'
-import {Button, Grid, Card} from 'semantic-ui-react'
-import LazyLoad, { lazyload } from 'react-lazyload'
+import {Grid} from 'semantic-ui-react'
+import LazyLoad from 'react-lazyload'
 
 class PeopleList extends Component {
 

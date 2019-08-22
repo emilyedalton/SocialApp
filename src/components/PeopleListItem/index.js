@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
-import {Button, Card, Grid, Segment, Icon, List, Label} from 'semantic-ui-react'
-import EventAttendee from '../EventAttendee'
+import {Card} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 
 class PeopleListItem extends Component {
     render () {
-        const {auth,event, deleteEvent,} = this.props
+        const {event} = this.props
     return(
         <Card>
           <Card.Content>

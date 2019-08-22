@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import EventListItem from '../EventListItem'
-import {Button} from 'semantic-ui-react'
-import LazyLoad, { lazyload } from 'react-lazyload'
+import LazyLoad from 'react-lazyload'
 
 class EventList extends Component {
 
     render () {
-        const {events, onEventOpen, deleteEvent, getEventsForDashboard, auth} = this.props;
+        const {events, onEventOpen, deleteEvent,  auth} = this.props;
     return(
 <div>
 {events&&events.map((event)=>(

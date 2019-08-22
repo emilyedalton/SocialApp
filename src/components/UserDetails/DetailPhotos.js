@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Card, Header, Grid, Image, Segment} from 'semantic-ui-react'
+import {Header, Grid, Image} from 'semantic-ui-react'
 
 
 const DetailPhotos = ({photos}) =>{

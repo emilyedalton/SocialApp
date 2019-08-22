@@ -11,7 +11,6 @@ const Attendees = ({attendees}) => {
  
     <Fragment>
       <Segment
-        textAlign='center'
         style={{ border: 'none' }}
         attached='top'
         secondary
@@ -36,7 +35,7 @@ const Attendees = ({attendees}) => {
                   </Label>
                 )}
                 <Item.Image size='tiny' src={attendee.photoURL ||'/assets/user.png' } />
-                <Item.Content verticalAlign='middle'>
+                <Item.Content>
                   <Item.Header as='h3'>
                     <Link to={`/user/${attendee.id}`}>
                       {attendee.displayName}

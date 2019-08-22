@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Button, Divider} from 'semantic-ui-react';
+import {Modal, Button } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
 import {closeModal, openModal} from "./ModalActions";

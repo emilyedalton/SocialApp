@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import {Image, Segment, Header, Divider, Grid, Button, Card} from 'semantic-ui-react';
+import { Segment, Header, Divider, Grid, Button } from 'semantic-ui-react';
 import DropZoneInput from './Dropzoneinput';
 import CropperInput from './CropperInput';
 import {connect} from 'react-redux'

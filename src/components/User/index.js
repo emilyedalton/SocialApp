@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {compose} from 'redux'
 import {connect}from 'react-redux'
 import UserHeader from '../UserDetails/userHeader'
-// import UserInfo from '../UserDetails/UserInfo'
 import UserTitles from '../UserTitles'
 import DetailPhotos from '../UserDetails/DetailPhotos'
 import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import {getAuthorTitles} from '../User/userActions'
 import UserQuery from '../UserDetails/userQuery'
-import SettingsNav from '../SettingsNav'
 
 
 
@@ -44,15 +41,6 @@ const mapState = (state, ownProps) => {
 
   };
 
-// const mapState = (state)=>({
-    // userUid: state.user.uid,
-//     auth: state.firebase.auth,
-//     profile: state.firebase.profile,
-//     photos: state.firestore.ordered.photos, 
-    
-
-
-// })
 
 class User extends Component{
     async componentDidMount(){

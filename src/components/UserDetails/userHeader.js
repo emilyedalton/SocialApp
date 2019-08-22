@@ -8,8 +8,8 @@ const UserHeader = ({profile, photos}) => {
                     <Segment>
                         <Item.Group>
                             <Item>
-                                <Item.Image avatar size='small' src={profile.photoURL}/>
-                                <Item.Content verticalAlign='bottom'>
+                                <Item.Image avatar size='tiny' src={profile.photoURL || '/assets/user.png'}/>
+                                <Item.Content>
                                     <Header as='h1'>{profile.displayName}</Header>
                                   
                                 </Item.Content>

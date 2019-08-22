@@ -30,7 +30,7 @@ class PeopleDashboard extends Component{
     }
 
 render(){
-    const {events, loading, profile, auth} =this.props; 
+    const {events, loading, auth} =this.props; 
     if (loading) return <LoadingComponent/>
 
 return(

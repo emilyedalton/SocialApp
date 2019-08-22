@@ -73,7 +73,7 @@ class Navbar extends Component {
                  {authenticated &&
                    <Button 
                    as={Link} 
-                   exact to='/createEvent' 
+                   exact={"true"} to='/createEvent' 
                    floated="right"  
                    inverted content="Create" />
                  }

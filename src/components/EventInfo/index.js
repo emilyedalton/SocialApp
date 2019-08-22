@@ -1,6 +1,5 @@
-import React,{Fragment, useRef}from 'react'
-import { Segment, Icon, Grid, Button, Header} from 'semantic-ui-react'
-import ReactToPrint from "react-to-print"
+import React,{Fragment, }from 'react'
+import { Segment, Grid, Header} from 'semantic-ui-react'
 
 
 
@@ -139,18 +138,7 @@ const EventInfo =({event, profile}) =>  {
         
     )
 }
-const ToPrint = () => {
-  const componentRef = useRef()
-        return (
-          <div>
-            <ReactToPrint
-              trigger={() => <Button content="content" />}
-              content={() => this.componentRef}
-            />
-            <EventInfo ref={el => (this.componentRef = el)} />
-          </div>
-        );
-      }
+
     
     export default EventInfo
 

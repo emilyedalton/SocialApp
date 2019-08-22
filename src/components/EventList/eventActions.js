@@ -1,4 +1,4 @@
-import {CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT, FETCH_EVENT} from './eventConstants'
+import {FETCH_EVENT} from './eventConstants'
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../Async/asyncActions';
 import {fetchSampleData} from "../../data/mockapi"
 import {toastr} from 'react-redux-toastr'

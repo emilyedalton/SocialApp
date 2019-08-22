@@ -2,10 +2,8 @@ import React, {Component} from 'react'
 import { Grid, Button} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import EventList from '../EventList'
-// import EventByAuthor from '../../components/EventsByAuthor'
 import { deleteEvent } from '../EventList/eventActions'
 import LoadingComponent from '../Loader';
-import EventActivity from '../EventActivity';
 import { firestoreConnect } from 'react-redux-firebase';
 import {sortByAuthor, getAllEvents, sortByTitle} from '../EventList/eventActions'
 
@@ -14,7 +12,6 @@ const mapState =(state) => ({
     loading: state.async.loading,
     auth:state.firebase.auth, 
 
-    // loadedEvents: []
 
 })
 
@@ -34,14 +31,7 @@ class EventDashboard extends Component {
         let all= await this.props.getAllEvents()
         console.log(all)}
 
-    //     // if (next && next.docs && next.docs.length > 1){
-    //     //     this.setState({
-    //     //         moreEvents: true
-
-    //     //     })
-    //     // }
-    //     console.log(events)
-    // }
+   
     sortByAuthor = async()=>{
       
         let next= await this.props.sortByAuthor()
@@ -82,7 +72,7 @@ class EventDashboard extends Component {
     
 
     render () {
-        const {events, loading, profile, auth} =this.props; 
+        const {events, loading, auth} =this.props; 
         if (loading) return <LoadingComponent/>
     return(
     
@@ -103,12 +93,7 @@ events={events}
 deleteEvent ={this.handleDeleteEvent}
 getEventsForDashboard={this.getEventsForDashboard}
 />
-{/* <EventByAuthor
-next={next}/> */}
-{/* </Grid.Column>
-<Grid.Column width ={6}>
-<h2>Activity Feed</h2>
-<EventActivity/> */}
+
 
 </Grid.Column>
 

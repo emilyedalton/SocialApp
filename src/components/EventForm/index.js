@@ -9,14 +9,11 @@ import {
   isRequired,
   hasLengthGreaterThan
 } from "revalidate";
-import cuid from "cuid";
 import TextInput from "../../common/form/TextInput";
 import TextArea from "../../common/form/TextArea";
 import RadioInput from "../../common/form/RadioInput";
-import SelectInput from "../../common/form/SelectInput";
 import { openModal } from "../../modals/ModalActions";
 import {withFirestore} from 'react-redux-firebase'
-import toastr from 'react-redux-toastr'
 
 const mapState = (state, ownProps) => {
   const eventID = ownProps.match.params.id;
@@ -67,9 +64,7 @@ class EventForm extends Component {
     const { firestore, match } = this.props;
     await firestore.unsetListener(`events/${match.params.id}`);
   }
-//   componentDidMount() {
-//     this.props.openModal("LoginModal");
-//   }
+
   handleTrade = value => {
     this.setState({ isTrade: true });
   };
@@ -97,12 +92,7 @@ class EventForm extends Component {
    
   };
 
-  // handleDelete = async values => {
-  //    this.props.deleteEvent(values);
-  //   this.props.history.push(`/events`)
-   
-   
-  // };
+ 
 
   render() {
     const { invalid, submitting, pristine } = this.props;
@@ -140,7 +130,6 @@ class EventForm extends Component {
                   component={RadioInput}
                   onChange={() => this.handleScholar()}
                 />
-                {/* todo: Gender Radio button */}
               </Form.Group>
               <Header
                 color="black"
@@ -418,15 +407,7 @@ class EventForm extends Component {
               >
                 Submit
               </Button>
-              {/* <Button
-                positive
-                type="submit"
-              >
-                Delete
-              </Button>
-              <Button onClick={this.props.history.goBack} type="button">
-                Cancel
-              </Button> */}
+            
             </Form>
           </Segment>
         </Grid.Column>
