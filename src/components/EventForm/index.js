@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Button, Form, Segment, Grid, Header } from "semantic-ui-react";
+import { Button, Form, Segment, Grid, Header, Divider } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import { createEvent, updateEvent, deleteEvent } from "../EventList/eventActions";
@@ -82,7 +82,7 @@ class EventForm extends Component {
           } else {
            
             let createdEvent = await this.props.createEvent(values);
-            this.props.history.push(`/events/${createdEvent.id}`);
+            this.props.history.push(`/title/${createdEvent.id}`);
           }
 
       }catch{
@@ -201,8 +201,16 @@ class EventForm extends Component {
               <Field
                 name="titleofBook"
                 type="text"
-                component={TextArea}
-                placeholder="Working Title and Subtitle of the Book"
+                component={TextInput}
+                placeholder="Working Title of the Book"
+                disabled=""
+              />
+        <Divider hidden />             
+               <Field
+                name="subTitle"
+                type="text"
+                component={TextInput}
+                placeholder="Working Subtitle of the Book (if none leave blank)"
                 disabled=""
               />
 

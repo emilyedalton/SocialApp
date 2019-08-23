@@ -37,6 +37,7 @@ const EventInfo =({event, profile}) =>  {
                 content="Working Title and Subtitle of the Book"
               />
                <p>{event.titleofBook}</p>
+               <p>{event.subTitle}</p>
 
                 <Header
                 color="black"

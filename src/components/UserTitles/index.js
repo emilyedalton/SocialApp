@@ -16,7 +16,7 @@ const UserTitles= ({profile, photos, auth, titles, isCurrentUser, eventsLoading}
                                  <Card.Group itemsPerRow={5}>
           {titles &&
             titles.map(title => (
-              <Card as={Link} to={`/event/${title.id}`} key={title.id}>
+              <Card as={Link} to={`/title/${title.id}`} key={title.id}>
                 <Card.Content >
                   <Card.Header>{title.titleofBook}</Card.Header>
  </Card.Content>
