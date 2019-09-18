@@ -1,7 +1,12 @@
 
 ## Northwestern University Press Author Portal
 
-In the project directory, you can run:
+A full-stack single page application that allows Northwestern University Press authors to create, read, and update information about their contracted titles with the press. 
 
-### `npm start`
+![GitHub Logo](/public/assets/home.png)
+
+
+This application also features admin functionality that enables press staff to view all submissions. 
+
+### `Admin View`
 
