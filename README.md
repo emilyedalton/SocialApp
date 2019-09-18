@@ -20,6 +20,16 @@ This application supports photo uploads for administrators and users.
 
 ![admin view form](/public/assets/photoupload.gif)
 
+### Technologies
+
+[Google Firebase](https://firebase.google.com/)
+[React JS](https://reactjs.org/)
+[Redux](https://redux.js.org/)
+[Semantic UI](https://react.semantic-ui.com/)
+
+And much more! 
+
+This tutorial(https://www.udemy.com/build-an-app-with-react-redux-and-firestore-from-scratch/) was my guide during the construction of this app 
 
 
 
