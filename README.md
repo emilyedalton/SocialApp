@@ -1,7 +1,7 @@
 
 ## Northwestern University Press Author Portal
 
-A full-stack single page application that allows Northwestern University Press authors to create, read, and update essential information about their contracted titles with the press. 
+A full-stack single page application that allows Northwestern University Press authors to create, read, and update essential information about their contracted titles with the press. This information later informs the creation of product data and catalog copy for the book.
 
 ![homepage](/public/assets/home.png)
 
