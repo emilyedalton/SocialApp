@@ -5,7 +5,7 @@ A full-stack single page application that allows Northwestern University Press a
 
 ![homepage](/public/assets/home.png)
 
-### `Admin View`
+### Admin View
 This application features admin functionality that enables press staff to view all submitted titles, and authors. 
 
 ![admin view](/public/assets/Admin_view.gif)
@@ -14,7 +14,7 @@ Administrators can also view and edit submitted author questionnaire forms.
 
 ![admin view form](/public/assets/form.gif)
 
-### `Photo Uploads`
+### Photo Uploads
 
 This application supports photo uploads for administrators and users. 
 
