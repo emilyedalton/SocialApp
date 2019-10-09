@@ -48,7 +48,7 @@ class User extends Component{
         console.log(events)
     }
 render(){
-    const {profile, photos, auth, match, events} =this.props;
+    const {profile, photos, auth, match, events, eventsLoading} =this.props;
     const isCurrentUser = auth.uid === match.params.id;
     
 
@@ -61,7 +61,10 @@ titles={events}
 isCurrentUser={isCurrentUser}/>
 <UserTitles profile={profile} photos={photos} auth={auth}
 titles={events}
-isCurrentUser={isCurrentUser}/>
+isCurrentUser={isCurrentUser}
+eventsLoading={eventsLoading}
+
+/>
 </div>
 )
 

@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {connect}from 'react-redux'
+import {Grid} from 'semantic-ui-react'
 import UserTitles from '../UserTitles'
 import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import {getAuthorTitles} from '../User/userActions'
 import UserQuery from './userQuery'
 import SettingsNav from '../SettingsNav'
+import LoadingComponent from '../Loader' 
 
 
 
-const actions = {
-    getAuthorTitles
-}
+
 const mapState = (state, ownProps) => {
     let userUid = null;
     let profile = {};
@@ -18,7 +18,6 @@ const mapState = (state, ownProps) => {
     if (ownProps.match.params.id === state.auth.uid) {
       profile = state.firebase.profile;
     } 
-
     else 
     {
       profile =
@@ -38,20 +37,24 @@ const mapState = (state, ownProps) => {
     };
 
   };
-
+const actions ={
+  getAuthorTitles
+};
 
 
 class UserDashboard extends Component{
-    async componentDidMount(){
-        let events = await this.props.getAuthorTitles(this.props.userUid)
-        console.log(events)
-    }
+    // async componentDidMount(){
+    //     let events = await this.props.getAuthorTitles(this.props.userUid)
+    //     console.log('I am workign')
+    //   }
 render(){
-    const {profile, photos, auth, match, events, eventsLoading} =this.props;
+    const {profile, photos, auth, match, events, eventsLoading, requesting} =this.props;
     const isCurrentUser = auth.uid === match.params.id;
+    // const loading = Object.values(requesting).some(a => a === true);
+    if (eventsLoading) return <LoadingComponent />;
 
 return(
-<div>
+<Grid>
  <SettingsNav profile={profile} photos={photos} auth={auth}
 titles={events}
 isCurrentUser={isCurrentUser}/>
@@ -59,8 +62,9 @@ isCurrentUser={isCurrentUser}/>
 <UserTitles profile={profile} photos={photos} auth={auth}
 titles={events}
 isCurrentUser={isCurrentUser}
-eventsLoading={eventsLoading}/>
-</div>
+eventsLoading={eventsLoading}
+/>
+</Grid>
 )
 
     }
