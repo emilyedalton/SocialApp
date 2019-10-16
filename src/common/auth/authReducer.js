@@ -25,8 +25,14 @@ export const signOutUser = (state, payload) =>{
     }
 }
 
+export const resetPassword = (state, payload) =>{
+    return {
+        ...state, 
+        authenticated: true,
+        currentUser: payload.cred.email
+        }
+}
 export default createReducer(initialState, {
 [LOGIN_USER]: loginUser,
 [SIGN_OUT_USER]: signOutUser
-
 })

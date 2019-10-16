@@ -61,6 +61,29 @@ export const login = cred => {
         })
       }
     }
+    // export const resetPassword = email => async dispatch => {
+    //     try {
+    //       firebase.auth()
+    //       .sendPasswordResetEmail(email)
+    //       .then(() => 
+    //         dispatch({
+    //           type: RESET_SUCCESS,
+    //           payload: "Reset email sent. Go check your inbox."
+    //         })
+    //       )
+    //       .catch(err => {
+    //         dispatch({
+    //           type: RESET_ERROR,
+    //           payload: "...some message for the user..."
+    //         });
+    //       });
+    //     } catch (err) {
+    //       dispatch({ 
+    //         type: RESET_ERROR, 
+    //         payload: "...some message for the user..." 
+    //       });
+    //     }
+    //   };
     // return dispatch => {
     //     dispatch({type: LOGIN_USER, payload:{
     //         cred
