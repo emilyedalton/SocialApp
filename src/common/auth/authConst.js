@@ -1,3 +1,4 @@
 export const LOGIN_USER ="LOGIN_USER"
 export const SIGN_OUT_USER ="SIGN_OUT_USER"
 export const RESET_PASSWORD = "RESET_PASSWORD"
+export const LOGIN_ERROR = "RESET_PASSWORD"

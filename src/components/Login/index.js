@@ -3,13 +3,14 @@ import { Form, Segment, Button, Label } from 'semantic-ui-react';
 import {connect} from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 import TextInput from '../../common/form/TextInput';
-import {login} from '../../common/auth/authActions'
+import {login, resetPassword} from '../../common/auth/authActions'
 
 const actions = {
     login, 
+    resetPassword
 }
 
-const LoginForm = ({login,error, handleSubmit}) => {
+const LoginForm = ({login,error, resetPassword, handleSubmit}) => {
   return (
     <Form  size="large" onSubmit={handleSubmit(login)}>
       <Segment>
@@ -29,7 +30,17 @@ const LoginForm = ({login,error, handleSubmit}) => {
         <Button fluid size="large" color="teal">
           Login
         </Button>
+       
       </Segment>
+      {/* <a href onSubmit={handleSubmit(resetPassword)}> </a> */}
+      {/* <Form  size="large" onSubmit={handleSubmit(resetPassword)}>
+      <Segment>
+      <Button fluid size="large" color="teal">
+          Forgot? 
+        </Button>
+      </Segment>
+      </Form> */}
+    
     </Form>
   );
 };

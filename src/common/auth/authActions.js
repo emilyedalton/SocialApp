@@ -14,7 +14,8 @@ export const login = cred => {
             .signInWithEmailAndPassword(cred.email, cred.password);
           dispatch(closeModal());
         } catch (error) {
-          console.log(error);
+          console.log(error)
+          console.log(this.user.email);
           throw new SubmissionError({
               _error: error.message
           })
@@ -61,39 +62,23 @@ export const login = cred => {
         })
       }
     }
-    // export const resetPassword = email => async dispatch => {
-    //     try {
-    //       firebase.auth()
-    //       .sendPasswordResetEmail(email)
-    //       .then(() => 
-    //         dispatch({
-    //           type: RESET_SUCCESS,
-    //           payload: "Reset email sent. Go check your inbox."
-    //         })
-    //       )
-    //       .catch(err => {
-    //         dispatch({
-    //           type: RESET_ERROR,
-    //           payload: "...some message for the user..."
-    //         });
-    //       });
-    //     } catch (err) {
-    //       dispatch({ 
-    //         type: RESET_ERROR, 
-    //         payload: "...some message for the user..." 
-    //       });
-    //     }
-    //   };
-    // return dispatch => {
-    //     dispatch({type: LOGIN_USER, payload:{
-    //         cred
-    //         }})
-    //     dispatch(closeModal())
-    // };
 
-// export const logout = () =>{
+    //almost functional reset password code 
 
-//     return{
-//         type: SIGN_OUT_USER
-//     }
-// }
+export const resetPassword = email =>{
+  return async (dispatch, email,{ getFirebase }) => {
+
+const firebase = getFirebase();
+try{
+  await firebase
+  .auth()
+  .sendPasswordResetEmail(email)
+} catch (error){
+  console.log(error)
+  throw new SubmissionError({
+    _error: error.message
+  })
+}
+
+}}
+    
