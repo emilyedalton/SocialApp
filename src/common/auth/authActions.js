@@ -6,22 +6,22 @@ import {toastr} from 'react-redux-toastr'
 
 export const login = cred => {
 
-    return async (dispatch, getState,{ getFirebase }) => {
-        const firebase = getFirebase();
-        try {
-          await firebase
-            .auth()
-            .signInWithEmailAndPassword(cred.email, cred.password);
-          dispatch(closeModal());
-        } catch (error) {
-          console.log(error)
-          console.log(this.user.email);
-          throw new SubmissionError({
-              _error: error.message
-          })
-         }
-        }
-    };
+  return async (dispatch, getState,{ getFirebase }) => {
+    const firebase = getFirebase();
+    try {
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(cred.email, cred.password);
+      dispatch(closeModal());
+    } catch (error) {
+      console.log(error)
+      console.log(this.user.email);
+      throw new SubmissionError({
+          _error: error.message
+      })
+    }
+  }
+};
 
     export const registerUser = user =>
     async (dispatch, getState, {getFirebase, getFirestore})=>{
@@ -64,15 +64,19 @@ export const login = cred => {
     }
 
     //almost functional reset password code 
+   
+    
 
-export const resetPassword = email =>{
-  return async (dispatch, email,{ getFirebase }) => {
+export const resetPassword = cred =>{
+  return async (dispatch, getState,{ getFirebase }) => {
 
 const firebase = getFirebase();
 try{
+  console.log ("I'm the email" , cred.email)
   await firebase
   .auth()
-  .sendPasswordResetEmail(email)
+  .sendPasswordResetEmail(cred.email)
+  console.log(cred.email)
 } catch (error){
   console.log(error)
   throw new SubmissionError({

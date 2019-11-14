@@ -12,7 +12,7 @@ const actions = {
 
 const LoginForm = ({login,error, resetPassword, handleSubmit}) => {
   return (
-    <Form  size="large" onSubmit={handleSubmit(login)}>
+    <Form  size="large" onSubmit={(handleSubmit(login))}>
       <Segment>
         <Field
           name="email"
