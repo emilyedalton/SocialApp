@@ -21,8 +21,8 @@ const ResetForm = ({error, resetPassword, handleSubmit}) => {
           placeholder="Email Address"
         />
         {error && <Label basic color='red'>{error}</Label>}
-        <Button fluid size="large" color="teal">
-          Login
+        <Button fluid size="large" color="black" style={{marginTop:"10px"}}>
+          Reset Password
         </Button>
       </Segment>
     </Form>

@@ -32,15 +32,17 @@ const RegisterForm = ({handleSubmit, registerUser,error, invalid, submitting }) 
             type="text"
             component={TextInput}
             placeholder="Email"
+            style={{marginTop:"10px"}}
           />
           <Field
             name="password"
             type="password"
             component={TextInput}
             placeholder="Password"
+            style={{marginTop:"10px"}}
           />
           {error && <Label basic color ='red'>{error}</Label>}
-          <Button disabled={invalid || submitting} fluid size="large" color="teal">
+          <Button disabled={invalid || submitting} fluid size="large" color="black"style={{marginTop:"10px"}}>
             Register
           </Button>
         </Segment>

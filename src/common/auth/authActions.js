@@ -74,7 +74,7 @@ try{
   await firebase
   .auth()
   .sendPasswordResetEmail(cred.email)
-  toastr.success('Success', 'Your password has been updated')
+  toastr.success('Check your email!', 'Your password has been reset')
 } catch (error){
   console.log(error)
   throw new SubmissionError({

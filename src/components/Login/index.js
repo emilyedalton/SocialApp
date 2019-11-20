@@ -27,7 +27,7 @@ const LoginForm = ({login,error, resetPassword, handleSubmit}) => {
           placeholder="password"
         />
         {error && <Label basic color='red'>{error}</Label>}
-        <Button fluid size="large" color="teal">
+        <Button fluid size="large" color="black"style={{marginTop:"10px"}}>
           Login
         </Button>
       </Segment>
