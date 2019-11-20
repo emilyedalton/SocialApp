@@ -30,23 +30,8 @@ const LoginForm = ({login,error, resetPassword, handleSubmit}) => {
         <Button fluid size="large" color="teal">
           Login
         </Button>
-       
       </Segment>
-      <Segment>
-      <Form size="large" onSubmit={(handleSubmit(resetPassword))}>
-      <Button fluid size="large" color="teal">
-          Forgot Password?
-        </Button>
-       </Form>
-      </Segment>
-      {/* <a href onSubmit={handleSubmit(resetPassword)}> </a> */}
-      {/* <Form  size="large" onSubmit={handleSubmit(resetPassword)}>
-      <Segment>
-      <Button fluid size="large" color="teal">
-          Forgot? 
-        </Button>
-      </Segment>
-      </Form> */}
+      
     
     </Form>
   );

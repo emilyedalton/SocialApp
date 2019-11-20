@@ -20,12 +20,6 @@ const ResetForm = ({error, resetPassword, handleSubmit}) => {
           type="text"
           placeholder="Email Address"
         />
-        <Field
-          name="password"
-          component={TextInput}
-          type="password"
-          placeholder="password"
-        />
         {error && <Label basic color='red'>{error}</Label>}
         <Button fluid size="large" color="teal">
           Login

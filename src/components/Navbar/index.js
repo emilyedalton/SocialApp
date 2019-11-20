@@ -28,6 +28,11 @@ class Navbar extends Component {
 
     }
 
+    handleReset =()=>{
+        this.props.openModal('ResetModal')
+
+    }
+
     handleSignOut =()=>{
         this.props.firebase.logout()
         this.props.history.push('/')
@@ -79,9 +84,14 @@ class Navbar extends Component {
                  }
                  </Menu.Item>
 
-    {authenticated ?(<SignIn auth={auth}profile={profile} signOut={this.handleSignOut}/> 
+    {authenticated ?(<SignIn 
+    auth={auth}
+    profile={profile} signOut={this.handleSignOut}/> 
                  ):(
-                 <SignOut signIn={this.handleSignIn} register ={this.handleRegister}/> 
+                 <SignOut 
+                 signIn={this.handleSignIn} 
+                 register ={this.handleRegister}
+                 reset={this.handleReset}/> 
                  
                  )}
                </Container>

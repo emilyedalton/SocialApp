@@ -63,9 +63,7 @@ export const login = cred => {
       }
     }
 
-    //almost functional reset password code 
-   
-    
+       
 
 export const resetPassword = cred =>{
   return async (dispatch, getState,{ getFirebase }) => {
@@ -76,7 +74,7 @@ try{
   await firebase
   .auth()
   .sendPasswordResetEmail(cred.email)
-  console.log(cred.email)
+  toastr.success('Success', 'Your password has been updated')
 } catch (error){
   console.log(error)
   throw new SubmissionError({
