@@ -6,9 +6,10 @@ return (
 
     <div>
 <Menu.Item position="right">
+
                    <Button onClick={signIn} basic inverted content="Login" />
                    <Button onClick={register} basic inverted content="Register" style={{marginLeft: '0.5em'}} />
-                   <Button onClick={reset} basic inverted content="Forgot Password?" style={{marginLeft: '0.5em'}} />
+                   <Button floated="right" onClick={reset} basic inverted content="Forgot Password?" style={{marginLeft: '0.5em'}} />
 
                  </Menu.Item>   
                   </div>

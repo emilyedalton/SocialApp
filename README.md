@@ -27,9 +27,6 @@ This application supports photo uploads for administrators and users.
 [Redux](https://redux.js.org/)
 [Semantic UI](https://react.semantic-ui.com/)
 
-And much more! 
-
-This tutorial(https://www.udemy.com/build-an-app-with-react-redux-and-firestore-from-scratch/) was my guide during the construction of this app 
 
 
 
